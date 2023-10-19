@@ -8,6 +8,10 @@
 import Foundation
 
 class SearchViewModel: ViewModel {
+   
+    // MARK: Props (public)
     
+    public let strings = Strings.SearchView()
+
     
 }

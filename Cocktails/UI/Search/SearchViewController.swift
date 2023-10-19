@@ -27,6 +27,11 @@ class SearchViewController: UIViewController {
     private func loadUI() {
         ui = SearchViewUI(for: self)
         
+        title = viewModel.strings.title
+        
+        ui.searchController.searchBar.placeholder = viewModel.strings.searchPlaceholder
+        ui.emptyDataSetView.title = viewModel.strings.emptyDataSetTitle
+        ui.emptyDataSetView.detail = viewModel.strings.emptyDataSetDetail
     }
 
 }

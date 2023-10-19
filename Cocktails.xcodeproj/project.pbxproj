@@ -20,7 +20,10 @@
 		7AD9AF6B2AE1A1E60010A141 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF6A2AE1A1E60010A141 /* SearchViewModel.swift */; };
 		7AD9AF6D2AE1A5070010A141 /* ViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF6C2AE1A5070010A141 /* ViewCoordinator.swift */; };
 		7AD9AF722AE1A6310010A141 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF712AE1A6310010A141 /* ViewModel.swift */; };
+		7AD9AF792AE1B40F0010A141 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF782AE1B40F0010A141 /* Strings.swift */; };
 		7AD9AF7B2AE1B8290010A141 /* UIView+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF7A2AE1B8280010A141 /* UIView+Anchors.swift */; };
+		7AD9AF7E2AE1C3050010A141 /* EmptyDatasetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF7D2AE1C3050010A141 /* EmptyDatasetView.swift */; };
+		7AD9AF832AE1D27E0010A141 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF822AE1D27E0010A141 /* Styles.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +61,10 @@
 		7AD9AF6A2AE1A1E60010A141 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		7AD9AF6C2AE1A5070010A141 /* ViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCoordinator.swift; sourceTree = "<group>"; };
 		7AD9AF712AE1A6310010A141 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		7AD9AF782AE1B40F0010A141 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		7AD9AF7A2AE1B8280010A141 /* UIView+Anchors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Anchors.swift"; sourceTree = "<group>"; };
+		7AD9AF7D2AE1C3050010A141 /* EmptyDatasetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDatasetView.swift; sourceTree = "<group>"; };
+		7AD9AF822AE1D27E0010A141 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,8 +147,11 @@
 			isa = PBXGroup;
 			children = (
 				7AD9AF6C2AE1A5070010A141 /* ViewCoordinator.swift */,
+				7AD9AF782AE1B40F0010A141 /* Strings.swift */,
+				7AD9AF822AE1D27E0010A141 /* Styles.swift */,
 				7AD9AF702AE1A6200010A141 /* Abstract */,
 				7AD9AF672AE1A1740010A141 /* Search */,
+				7AD9AF7C2AE1C2EB0010A141 /* Components */,
 				7AD9AF772AE1B24E0010A141 /* Extensions */,
 			);
 			path = UI;
@@ -172,6 +181,22 @@
 				7AD9AF7A2AE1B8280010A141 /* UIView+Anchors.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7AD9AF7C2AE1C2EB0010A141 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				7AD9AF7F2AE1C30B0010A141 /* Views */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		7AD9AF7F2AE1C30B0010A141 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7AD9AF7D2AE1C3050010A141 /* EmptyDatasetView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,10 +330,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AD9AF6B2AE1A1E60010A141 /* SearchViewModel.swift in Sources */,
+				7AD9AF792AE1B40F0010A141 /* Strings.swift in Sources */,
 				7AD9AF372AE192840010A141 /* SearchViewController.swift in Sources */,
+				7AD9AF832AE1D27E0010A141 /* Styles.swift in Sources */,
 				7AD9AF332AE192840010A141 /* AppDelegate.swift in Sources */,
 				7AD9AF692AE1A1D50010A141 /* SearchViewUI.swift in Sources */,
 				7AD9AF352AE192840010A141 /* SceneDelegate.swift in Sources */,
+				7AD9AF7E2AE1C3050010A141 /* EmptyDatasetView.swift in Sources */,
 				7AD9AF3D2AE192840010A141 /* Cocktails.xcdatamodeld in Sources */,
 				7AD9AF7B2AE1B8290010A141 /* UIView+Anchors.swift in Sources */,
 				7AD9AF722AE1A6310010A141 /* ViewModel.swift in Sources */,
