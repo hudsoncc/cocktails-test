@@ -30,6 +30,8 @@
 		7AD9AF8E2AE1E64E0010A141 /* NetworkQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF8D2AE1E64E0010A141 /* NetworkQueue.swift */; };
 		7AD9AF902AE1EE190010A141 /* API+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF8F2AE1EE190010A141 /* API+Model.swift */; };
 		7AD9AF922AE25C890010A141 /* API+Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF912AE25C890010A141 /* API+Endpoint.swift */; };
+		7AD9AF952AE2919D0010A141 /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF942AE2919D0010A141 /* LocalData.swift */; };
+		7AD9AF9F2AE2A9480010A141 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF9E2AE2A9480010A141 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		7AD9AF8D2AE1E64E0010A141 /* NetworkQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkQueue.swift; sourceTree = "<group>"; };
 		7AD9AF8F2AE1EE190010A141 /* API+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Model.swift"; sourceTree = "<group>"; };
 		7AD9AF912AE25C890010A141 /* API+Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Endpoint.swift"; sourceTree = "<group>"; };
+		7AD9AF942AE2919D0010A141 /* LocalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalData.swift; sourceTree = "<group>"; };
+		7AD9AF9E2AE2A9480010A141 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,7 +138,6 @@
 				7AD9AF3E2AE192870010A141 /* Assets.xcassets */,
 				7AD9AF402AE192870010A141 /* LaunchScreen.storyboard */,
 				7AD9AF432AE192870010A141 /* Info.plist */,
-				7AD9AF3B2AE192840010A141 /* Cocktails.xcdatamodeld */,
 			);
 			path = Cocktails;
 			sourceTree = "<group>";
@@ -217,6 +220,8 @@
 			isa = PBXGroup;
 			children = (
 				7AD9AF8A2AE1E6200010A141 /* API */,
+				7AD9AF9D2AE2A93B0010A141 /* CoreData */,
+				7AD9AF932AE2916E0010A141 /* LocalData */,
 			);
 			path = "Business Logic";
 			sourceTree = "<group>";
@@ -231,6 +236,39 @@
 				7AD9AF8D2AE1E64E0010A141 /* NetworkQueue.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		7AD9AF932AE2916E0010A141 /* LocalData */ = {
+			isa = PBXGroup;
+			children = (
+				7AD9AF942AE2919D0010A141 /* LocalData.swift */,
+				7AD9AF982AE298360010A141 /* Model */,
+			);
+			path = LocalData;
+			sourceTree = "<group>";
+		};
+		7AD9AF982AE298360010A141 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7AD9AF3B2AE192840010A141 /* Cocktails.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7AD9AF9D2AE2A93B0010A141 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				7AD9AF9E2AE2A9480010A141 /* CoreDataStack.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		7AD9AFA02AE2BD6F0010A141 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				7AD9AF9B2AE2A06D0010A141 /* DictionaryRepresentable.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,6 +404,7 @@
 				7AD9AF6B2AE1A1E60010A141 /* SearchViewModel.swift in Sources */,
 				7AD9AF792AE1B40F0010A141 /* Strings.swift in Sources */,
 				7AD9AF372AE192840010A141 /* SearchViewController.swift in Sources */,
+				7AD9AF952AE2919D0010A141 /* LocalData.swift in Sources */,
 				7AD9AF832AE1D27E0010A141 /* Styles.swift in Sources */,
 				7AD9AF332AE192840010A141 /* AppDelegate.swift in Sources */,
 				7AD9AF852AE1DED20010A141 /* NSObject+Debounce.swift in Sources */,
@@ -377,6 +416,7 @@
 				7AD9AF7E2AE1C3050010A141 /* EmptyDatasetView.swift in Sources */,
 				7AD9AF3D2AE192840010A141 /* Cocktails.xcdatamodeld in Sources */,
 				7AD9AF8E2AE1E64E0010A141 /* NetworkQueue.swift in Sources */,
+				7AD9AF9F2AE2A9480010A141 /* CoreDataStack.swift in Sources */,
 				7AD9AF922AE25C890010A141 /* API+Endpoint.swift in Sources */,
 				7AD9AF7B2AE1B8290010A141 /* UIView+Anchors.swift in Sources */,
 				7AD9AF722AE1A6310010A141 /* ViewModel.swift in Sources */,
