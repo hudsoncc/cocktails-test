@@ -21,5 +21,13 @@ class LocalData: NSObject {
     public func load() async throws {
         try await coreData.load()
     }
+
+    // MARK: Drinks
+    
+    public func saveDrinks(from drinkDictionaries: [[String:Any?]]?) {
+        let idKey = #keyPath(Drink.idDrink)
+        coreData.saveObjects(ofType: Drink.self, from: drinkDictionaries, idKey: idKey)
+    }
+    
     
 }

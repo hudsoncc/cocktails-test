@@ -38,16 +38,19 @@ class SearchViewModel: ViewModel {
             return
         }
         
-        debugPrint("Fetching drinks for search: \"\(currentSearchQuery)\"")
-
         Task {
             do {
                 let drinks = try await api.fetchDrinks(forQuery: currentSearchQuery)
-                debugPrint("Results for search \"\(currentSearchQuery)\":\n\(drinks)")
+                saveDrinks(drinks)
             } catch {
-                // TODO: Error handling out of scope?
+                // Error handling out of scope for project?
             }
         }
+    }
+    
+    private func saveDrinks(_ drinks: API.Model.Drinks) {
+        let drinkDictionaries = drinks.drinks?.map { $0.dictionaryRepresentation() }
+        LocalData.shared.saveDrinks(from: drinkDictionaries)
     }
     
     

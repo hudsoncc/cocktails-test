@@ -15,11 +15,12 @@ extension API {
 
 extension API.Model {
     
-    struct Drinks: Decodable {
+    struct Drinks: Decodable, DictionaryRepresentable {
         var drinks: [Drink]?
     }
     
-    struct Drink: Codable {
+    struct Drink: Codable, DictionaryRepresentable {
+        var idDrink: String
         var strDrink: String
         var strInstructions: String?
         var strTags: String?
@@ -41,4 +42,5 @@ extension API.Model {
         var strIngredient14: String?
         var strIngredient15: String?
     }
+    
 }

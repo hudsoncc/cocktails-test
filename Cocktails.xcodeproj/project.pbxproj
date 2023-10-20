@@ -31,6 +31,7 @@
 		7AD9AF902AE1EE190010A141 /* API+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF8F2AE1EE190010A141 /* API+Model.swift */; };
 		7AD9AF922AE25C890010A141 /* API+Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF912AE25C890010A141 /* API+Endpoint.swift */; };
 		7AD9AF952AE2919D0010A141 /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF942AE2919D0010A141 /* LocalData.swift */; };
+		7AD9AF9C2AE2A06D0010A141 /* DictionaryRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF9B2AE2A06D0010A141 /* DictionaryRepresentable.swift */; };
 		7AD9AF9F2AE2A9480010A141 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF9E2AE2A9480010A141 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		7AD9AF8F2AE1EE190010A141 /* API+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Model.swift"; sourceTree = "<group>"; };
 		7AD9AF912AE25C890010A141 /* API+Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Endpoint.swift"; sourceTree = "<group>"; };
 		7AD9AF942AE2919D0010A141 /* LocalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalData.swift; sourceTree = "<group>"; };
+		7AD9AF9B2AE2A06D0010A141 /* DictionaryRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryRepresentable.swift; sourceTree = "<group>"; };
 		7AD9AF9E2AE2A9480010A141 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -222,6 +224,7 @@
 				7AD9AF8A2AE1E6200010A141 /* API */,
 				7AD9AF9D2AE2A93B0010A141 /* CoreData */,
 				7AD9AF932AE2916E0010A141 /* LocalData */,
+				7AD9AFA02AE2BD6F0010A141 /* Utility */,
 			);
 			path = "Business Logic";
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AD9AF6B2AE1A1E60010A141 /* SearchViewModel.swift in Sources */,
+				7AD9AF9C2AE2A06D0010A141 /* DictionaryRepresentable.swift in Sources */,
 				7AD9AF792AE1B40F0010A141 /* Strings.swift in Sources */,
 				7AD9AF372AE192840010A141 /* SearchViewController.swift in Sources */,
 				7AD9AF952AE2919D0010A141 /* LocalData.swift in Sources */,
