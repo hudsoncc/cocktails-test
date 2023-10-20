@@ -24,6 +24,11 @@
 		7AD9AF7B2AE1B8290010A141 /* UIView+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF7A2AE1B8280010A141 /* UIView+Anchors.swift */; };
 		7AD9AF7E2AE1C3050010A141 /* EmptyDatasetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF7D2AE1C3050010A141 /* EmptyDatasetView.swift */; };
 		7AD9AF832AE1D27E0010A141 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF822AE1D27E0010A141 /* Styles.swift */; };
+		7AD9AF892AE1E5390010A141 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF882AE1E5390010A141 /* API.swift */; };
+		7AD9AF8C2AE1E6310010A141 /* NetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF8B2AE1E6310010A141 /* NetworkOperation.swift */; };
+		7AD9AF8E2AE1E64E0010A141 /* NetworkQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF8D2AE1E64E0010A141 /* NetworkQueue.swift */; };
+		7AD9AF902AE1EE190010A141 /* API+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF8F2AE1EE190010A141 /* API+Model.swift */; };
+		7AD9AF922AE25C890010A141 /* API+Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF912AE25C890010A141 /* API+Endpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +70,11 @@
 		7AD9AF7A2AE1B8280010A141 /* UIView+Anchors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Anchors.swift"; sourceTree = "<group>"; };
 		7AD9AF7D2AE1C3050010A141 /* EmptyDatasetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDatasetView.swift; sourceTree = "<group>"; };
 		7AD9AF822AE1D27E0010A141 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		7AD9AF882AE1E5390010A141 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		7AD9AF8B2AE1E6310010A141 /* NetworkOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkOperation.swift; sourceTree = "<group>"; };
+		7AD9AF8D2AE1E64E0010A141 /* NetworkQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkQueue.swift; sourceTree = "<group>"; };
+		7AD9AF8F2AE1EE190010A141 /* API+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Model.swift"; sourceTree = "<group>"; };
+		7AD9AF912AE25C890010A141 /* API+Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Endpoint.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +128,7 @@
 				7AD9AF322AE192840010A141 /* AppDelegate.swift */,
 				7AD9AF342AE192840010A141 /* SceneDelegate.swift */,
 				7AD9AF662AE1A1390010A141 /* UI */,
+				7AD9AF862AE1E3370010A141 /* Business Logic */,
 				7AD9AF3E2AE192870010A141 /* Assets.xcassets */,
 				7AD9AF402AE192870010A141 /* LaunchScreen.storyboard */,
 				7AD9AF432AE192870010A141 /* Info.plist */,
@@ -197,6 +208,26 @@
 				7AD9AF7D2AE1C3050010A141 /* EmptyDatasetView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		7AD9AF862AE1E3370010A141 /* Business Logic */ = {
+			isa = PBXGroup;
+			children = (
+				7AD9AF8A2AE1E6200010A141 /* API */,
+			);
+			path = "Business Logic";
+			sourceTree = "<group>";
+		};
+		7AD9AF8A2AE1E6200010A141 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				7AD9AF882AE1E5390010A141 /* API.swift */,
+				7AD9AF912AE25C890010A141 /* API+Endpoint.swift */,
+				7AD9AF8F2AE1EE190010A141 /* API+Model.swift */,
+				7AD9AF8B2AE1E6310010A141 /* NetworkOperation.swift */,
+				7AD9AF8D2AE1E64E0010A141 /* NetworkQueue.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,10 +365,15 @@
 				7AD9AF372AE192840010A141 /* SearchViewController.swift in Sources */,
 				7AD9AF832AE1D27E0010A141 /* Styles.swift in Sources */,
 				7AD9AF332AE192840010A141 /* AppDelegate.swift in Sources */,
+				7AD9AF892AE1E5390010A141 /* API.swift in Sources */,
 				7AD9AF692AE1A1D50010A141 /* SearchViewUI.swift in Sources */,
 				7AD9AF352AE192840010A141 /* SceneDelegate.swift in Sources */,
+				7AD9AF902AE1EE190010A141 /* API+Model.swift in Sources */,
+				7AD9AF8C2AE1E6310010A141 /* NetworkOperation.swift in Sources */,
 				7AD9AF7E2AE1C3050010A141 /* EmptyDatasetView.swift in Sources */,
 				7AD9AF3D2AE192840010A141 /* Cocktails.xcdatamodeld in Sources */,
+				7AD9AF8E2AE1E64E0010A141 /* NetworkQueue.swift in Sources */,
+				7AD9AF922AE25C890010A141 /* API+Endpoint.swift in Sources */,
 				7AD9AF7B2AE1B8290010A141 /* UIView+Anchors.swift in Sources */,
 				7AD9AF722AE1A6310010A141 /* ViewModel.swift in Sources */,
 				7AD9AF6D2AE1A5070010A141 /* ViewCoordinator.swift in Sources */,
