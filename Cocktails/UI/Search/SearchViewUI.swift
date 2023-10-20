@@ -44,8 +44,10 @@ class SearchViewUI: NSObject {
     // MARK: Subviews
     
     private func addTableView() {
+        tableView.dataSource = viewController
         tableView.estimatedRowHeight = Metric.estimatedRowHeight
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.registerCells([SearchViewCell.self])
         view.addSubview(tableView)
         tableView.anchorFill()
     }

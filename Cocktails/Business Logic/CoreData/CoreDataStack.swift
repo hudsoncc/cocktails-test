@@ -129,10 +129,11 @@ class CoreDataStack: NSObject {
     
     // MARK: Fetch
 
-    func fetchObjects<T:NSManagedObject>(in context: NSManagedObjectContext? = nil) -> [T] {
+    func fetchObjects<T:NSManagedObject>(predicate: NSPredicate? = nil, in context: NSManagedObjectContext? = nil) -> [T] {
         let context = context ?? viewContext
         let entityName = String(describing: T.self)
         let request: NSFetchRequest<T> = NSFetchRequest(entityName: entityName)
+        request.predicate = predicate
         
         var results = [T]()
         context.performAndWait {

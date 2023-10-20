@@ -24,6 +24,16 @@ class LocalData: NSObject {
 
     // MARK: Drinks
     
+    public func fetchDrinks(forQuery searchQuery: String, context: NSManagedObjectContext? = nil) -> [Drink] {
+        let predicate = Drink.searchQueryPredicates.withSubstitutionVariables(["query": searchQuery])
+
+        return coreData.fetchObjects(predicate: predicate, in: context)
+    }
+    
+    public func fetchDrinks(context: NSManagedObjectContext? = nil) -> [Drink] {
+        coreData.fetchObjects(in: context)
+    }
+    
     public func saveDrinks(from drinkDictionaries: [[String:Any?]]?) {
         let idKey = #keyPath(Drink.idDrink)
         coreData.saveObjects(ofType: Drink.self, from: drinkDictionaries, idKey: idKey)

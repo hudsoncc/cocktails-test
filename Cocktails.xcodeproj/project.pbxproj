@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A2CBF622AE2E5A4009995CF /* SearchViewDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2CBF612AE2E5A4009995CF /* SearchViewDataItem.swift */; };
+		7A2CBF642AE2ECB8009995CF /* SearchViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2CBF632AE2ECB8009995CF /* SearchViewCell.swift */; };
+		7A2CBF662AE2EF87009995CF /* UITableViewCell+ID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2CBF652AE2EF87009995CF /* UITableViewCell+ID.swift */; };
+		7A2CBF692AE2F784009995CF /* Drink+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2CBF682AE2F784009995CF /* Drink+Helper.swift */; };
 		7AD9AF332AE192840010A141 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF322AE192840010A141 /* AppDelegate.swift */; };
 		7AD9AF352AE192840010A141 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF342AE192840010A141 /* SceneDelegate.swift */; };
 		7AD9AF372AE192840010A141 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF362AE192840010A141 /* SearchViewController.swift */; };
@@ -53,6 +57,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A2CBF612AE2E5A4009995CF /* SearchViewDataItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewDataItem.swift; sourceTree = "<group>"; };
+		7A2CBF632AE2ECB8009995CF /* SearchViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCell.swift; sourceTree = "<group>"; };
+		7A2CBF652AE2EF87009995CF /* UITableViewCell+ID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+ID.swift"; sourceTree = "<group>"; };
+		7A2CBF682AE2F784009995CF /* Drink+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Drink+Helper.swift"; sourceTree = "<group>"; };
 		7AD9AF2F2AE192840010A141 /* Cocktails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cocktails.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AD9AF322AE192840010A141 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AD9AF342AE192840010A141 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -181,6 +189,8 @@
 				7AD9AF362AE192840010A141 /* SearchViewController.swift */,
 				7AD9AF682AE1A1D50010A141 /* SearchViewUI.swift */,
 				7AD9AF6A2AE1A1E60010A141 /* SearchViewModel.swift */,
+				7A2CBF612AE2E5A4009995CF /* SearchViewDataItem.swift */,
+				7A2CBF632AE2ECB8009995CF /* SearchViewCell.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -198,6 +208,7 @@
 			children = (
 				7AD9AF7A2AE1B8280010A141 /* UIView+Anchors.swift */,
 				7AD9AF842AE1DED20010A141 /* NSObject+Debounce.swift */,
+				7A2CBF652AE2EF87009995CF /* UITableViewCell+ID.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -254,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				7AD9AF3B2AE192840010A141 /* Cocktails.xcdatamodeld */,
+				7A2CBF682AE2F784009995CF /* Drink+Helper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -411,10 +423,13 @@
 				7AD9AF952AE2919D0010A141 /* LocalData.swift in Sources */,
 				7AD9AF832AE1D27E0010A141 /* Styles.swift in Sources */,
 				7AD9AF332AE192840010A141 /* AppDelegate.swift in Sources */,
+				7A2CBF642AE2ECB8009995CF /* SearchViewCell.swift in Sources */,
+				7A2CBF692AE2F784009995CF /* Drink+Helper.swift in Sources */,
 				7AD9AF852AE1DED20010A141 /* NSObject+Debounce.swift in Sources */,
 				7AD9AF892AE1E5390010A141 /* API.swift in Sources */,
 				7AD9AF692AE1A1D50010A141 /* SearchViewUI.swift in Sources */,
 				7AD9AF352AE192840010A141 /* SceneDelegate.swift in Sources */,
+				7A2CBF662AE2EF87009995CF /* UITableViewCell+ID.swift in Sources */,
 				7AD9AF902AE1EE190010A141 /* API+Model.swift in Sources */,
 				7AD9AF8C2AE1E6310010A141 /* NetworkOperation.swift in Sources */,
 				7AD9AF7E2AE1C3050010A141 /* EmptyDatasetView.swift in Sources */,
@@ -423,6 +438,7 @@
 				7AD9AF9F2AE2A9480010A141 /* CoreDataStack.swift in Sources */,
 				7AD9AF922AE25C890010A141 /* API+Endpoint.swift in Sources */,
 				7AD9AF7B2AE1B8290010A141 /* UIView+Anchors.swift in Sources */,
+				7A2CBF622AE2E5A4009995CF /* SearchViewDataItem.swift in Sources */,
 				7AD9AF722AE1A6310010A141 /* ViewModel.swift in Sources */,
 				7AD9AF6D2AE1A5070010A141 /* ViewCoordinator.swift in Sources */,
 			);
