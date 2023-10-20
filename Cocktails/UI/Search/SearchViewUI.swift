@@ -51,6 +51,7 @@ class SearchViewUI: NSObject {
     }
     
     private func addSearchController() {
+        searchController.searchResultsUpdater = viewController
         searchController.obscuresBackgroundDuringPresentation = false
         viewController.navigationItem.searchController = searchController
         viewController.navigationItem.hidesSearchBarWhenScrolling = false

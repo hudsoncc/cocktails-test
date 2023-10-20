@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ViewModel {
+class ViewModel: NSObject {
     
     // MARK: Props (public)
     

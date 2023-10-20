@@ -36,3 +36,15 @@ class SearchViewController: UIViewController {
 
 }
 
+extension SearchViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchQuery = searchController.searchBar.text else {
+            return
+        }
+        
+        viewModel.fetchDrinksDebounced(for: searchQuery)
+    }
+    
+}
+

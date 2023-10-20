@@ -14,6 +14,16 @@ class API {
     enum HTTPMethod: String {
         case GET
     }
+
+    // MARK: Fetch
+    
+    public func fetchDrinks(forQuery searchQuery: String) async throws -> Model.Drinks {
+        let params = [
+            URLQueryItem(name: Endpoint.Parameters.search.rawValue, value: searchQuery)
+        ]
+        let request = newRequest(.GET, toEndpoint: .search, params: params)
+        return try await enqueueRequest(request)
+    }
     
     // MARK: Helpers
     

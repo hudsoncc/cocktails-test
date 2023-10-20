@@ -11,6 +11,10 @@ extension API {
     
     enum Endpoint: String {
         case search
+        
+        enum Parameters: String {
+            case search = "s"
+        }
     }
     
 }
