@@ -90,5 +90,9 @@ class SearchViewModel: ViewModel {
         LocalData.shared.saveDrinks(from: drinkDictionaries)
     }
     
+    // MARK: Navigation
     
+    public func showDetails(forDrink drink: SearchViewDataItem) {
+        coordinator.navigateToDetails(forDrinkID: drink.id)
+    }
 }

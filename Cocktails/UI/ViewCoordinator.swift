@@ -29,5 +29,12 @@ class ViewCoordinator: NSObject {
         navigationController.setViewControllers([viewController], animated: false)
     }
     
+    public func navigateToDetails(forDrinkID drinkID: String) {
+        let viewModel = DetailViewModel(coordinator: self)
+        let viewController = DetailViewController()
+        viewController.viewModel = viewModel
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
     
 }

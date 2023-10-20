@@ -17,5 +17,9 @@ struct Strings {
         let emptySearchTitle = "Search Cocktails"
         let emptySearchDetail = "Search for cocktail recipes by name or ingredients."
     }
+    
+    struct DetailView {
+      
+    }
 
 }

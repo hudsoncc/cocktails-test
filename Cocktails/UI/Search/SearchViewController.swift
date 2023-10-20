@@ -86,7 +86,16 @@ extension SearchViewController: UITableViewDataSource {
         return cell
     }
     
+}
+
+extension SearchViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let drink = viewModel.drink(at: indexPath.row, isSearching: isSearching)
+        viewModel.showDetails(forDrink: drink)
+    }
 }
 
 extension SearchViewController: UISearchControllerDelegate {

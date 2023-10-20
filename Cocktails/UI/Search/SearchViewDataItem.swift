@@ -22,6 +22,10 @@ class SearchViewDataItem: SearchViewDataViewModel {
         self.drink = drink
     }
     
+    public var id: String {
+        drink.idDrink ?? ""
+    }
+    
     public var name: String {
         drink.strDrink ?? ""
     }
