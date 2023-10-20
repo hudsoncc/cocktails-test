@@ -13,12 +13,19 @@ class SearchViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+        setup()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
 
+    private func setup() {
+        detailTextLabel?.numberOfLines = 4
+        detailTextLabel?.lineBreakMode = .byTruncatingTail
+        detailTextLabel?.textColor = .secondaryLabel
+    }
+    
     // MARK: Configure
     
     public func configure(for dataItem: SearchViewDataItem) {
