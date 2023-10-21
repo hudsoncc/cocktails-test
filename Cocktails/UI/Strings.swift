@@ -19,7 +19,8 @@ struct Strings {
     }
     
     struct DetailView {
-      
+        let instructions = "Instructions"
+        let ingredients = "Ingredients"
     }
 
 }

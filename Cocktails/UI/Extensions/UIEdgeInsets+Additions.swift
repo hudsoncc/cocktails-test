@@ -9,8 +9,13 @@ import UIKit
 
 extension UIEdgeInsets {
     
-    init(all: CGFloat) {
-        self.init(top: all, left: all, bottom: all, right: all)
+    init(all: CGFloat, invertsBottomRight: Bool = false) {
+        self.init(
+            top: all,
+            left: all,
+            bottom: invertsBottomRight ? -all : all,
+            right: invertsBottomRight ? -all : all
+        )
     }
     
     init(top: CGFloat = 0, bottom: CGFloat = 0, left: CGFloat = 0, right: CGFloat = 0) {

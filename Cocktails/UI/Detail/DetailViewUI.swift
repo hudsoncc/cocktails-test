@@ -59,7 +59,8 @@ class DetailViewUI: NSObject {
         tableView.dataSource = viewController
         tableView.estimatedRowHeight = Metric.estimatedRowHeight
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.registerCells([UITableViewCell.self])
+        tableView.allowsSelection = false
+        tableView.registerCells([DetailViewCell.self])
         view.addSubview(tableView)
         tableView.anchorFill()
     }
