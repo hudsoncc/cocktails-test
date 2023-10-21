@@ -24,12 +24,14 @@ class DetailViewUI: NSObject {
     // MARK: Structs
     
     struct Metric {
+        static let headerViewHeight: CGFloat = 288
         static let estimatedRowHeight: CGFloat = 88
     }
     
     // MARK: Props (public)
 
     private(set) var tableView = UITableView(frame: .zero, style: .plain)
+    private(set) var headerView = DetailHeaderView()
 
     // MARK: Props (private)
     
@@ -49,6 +51,8 @@ class DetailViewUI: NSObject {
         view.backgroundColor = .systemBackground
         
         addTableView()
+        addHeaderView()
+    }
     
     // MARK: Subviews
     
@@ -61,6 +65,13 @@ class DetailViewUI: NSObject {
         tableView.anchorFill()
     }
     
+    private func addHeaderView() {
+        tableView.tableHeaderView = headerView
+        tableView.contentInsetAdjustmentBehavior = .never
+
+        headerView.anchorToWidth(ofView: tableView)
+        headerView.anchorEdges([.top, .left, .right])
+        headerView.anchorHeight(Metric.headerViewHeight)
     }
     
 }
