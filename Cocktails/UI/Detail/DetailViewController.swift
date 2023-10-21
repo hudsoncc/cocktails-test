@@ -30,4 +30,28 @@ class DetailViewController: UIViewController {
         ui = DetailViewUI(for: self)
                 
     }
+
+extension DetailViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        DetailViewUI.Section.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.cellID, for: indexPath)
+        
+        let section = DetailViewUI.Section(rawValue: indexPath.section)!
+        
+        switch section {
+        case .tags: break
+        case .ingredients: break
+        case .instructions: break
+        }
+        return cell
+    }
+    
 }
