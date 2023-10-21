@@ -15,6 +15,7 @@
 		7A2CBF6E2AE320BF009995CF /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2CBF6D2AE320BF009995CF /* DetailViewModel.swift */; };
 		7A2CBF702AE320D8009995CF /* DetailViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2CBF6F2AE320D8009995CF /* DetailViewUI.swift */; };
 		7A2CBF722AE33030009995CF /* DetailViewDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2CBF712AE33030009995CF /* DetailViewDataItem.swift */; };
+		7A2CBF742AE3CB3E009995CF /* DetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2CBF732AE3CB3E009995CF /* DetailHeaderView.swift */; };
 		7A2CBF762AE3D1D5009995CF /* UIEdgeInsets+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2CBF752AE3D1D5009995CF /* UIEdgeInsets+Additions.swift */; };
 		7AD9AF332AE192840010A141 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF322AE192840010A141 /* AppDelegate.swift */; };
 		7AD9AF352AE192840010A141 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF342AE192840010A141 /* SceneDelegate.swift */; };
@@ -70,6 +71,7 @@
 		7A2CBF6D2AE320BF009995CF /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		7A2CBF6F2AE320D8009995CF /* DetailViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewUI.swift; sourceTree = "<group>"; };
 		7A2CBF712AE33030009995CF /* DetailViewDataItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewDataItem.swift; sourceTree = "<group>"; };
+		7A2CBF732AE3CB3E009995CF /* DetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderView.swift; sourceTree = "<group>"; };
 		7A2CBF752AE3D1D5009995CF /* UIEdgeInsets+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Additions.swift"; sourceTree = "<group>"; };
 		7AD9AF2F2AE192840010A141 /* Cocktails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cocktails.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AD9AF322AE192840010A141 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				7A2CBF6F2AE320D8009995CF /* DetailViewUI.swift */,
 				7A2CBF6D2AE320BF009995CF /* DetailViewModel.swift */,
 				7A2CBF712AE33030009995CF /* DetailViewDataItem.swift */,
+				7A2CBF732AE3CB3E009995CF /* DetailHeaderView.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				7A2CBF692AE2F784009995CF /* Drink+Helper.swift in Sources */,
 				7AD9AF852AE1DED20010A141 /* NSObject+Debounce.swift in Sources */,
 				7AD9AF892AE1E5390010A141 /* API.swift in Sources */,
+				7A2CBF742AE3CB3E009995CF /* DetailHeaderView.swift in Sources */,
 				7AD9AF692AE1A1D50010A141 /* SearchViewUI.swift in Sources */,
 				7AD9AF352AE192840010A141 /* SceneDelegate.swift in Sources */,
 				7A2CBF6C2AE320B0009995CF /* DetailViewController.swift in Sources */,

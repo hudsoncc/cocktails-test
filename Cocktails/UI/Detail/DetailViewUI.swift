@@ -24,7 +24,7 @@ class DetailViewUI: NSObject {
     // MARK: Structs
     
     struct Metric {
-        static let headerViewHeight: CGFloat = 288
+        static let headerViewHeight: CGFloat = 384
         static let estimatedRowHeight: CGFloat = 88
     }
     

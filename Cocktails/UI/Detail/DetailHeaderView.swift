@@ -9,38 +9,38 @@ import UIKit
 
 class DetailHeaderView: UIView {
     
-    // MARK: Structs
-
-    struct Metric {
-        static let imageViewHeight: CGFloat = 200
-    }
-    
     // MARK: Props (public)
     
-    private var supertitle: String! {
+    public var supertitle: String! {
         didSet {
-            supertitleLabel.text = supertitle
+            supertitleLabel.text = supertitle.uppercased()
         }
     }
     
-    private var title: String! {
+    public var title: String! {
         didSet {
             titleLabel.text = title
         }
     }
         
-    private var image: UIImage?  {
+    public var image: UIImage?  {
         didSet {
             imageView.image = image
+            imageView.contentMode = .scaleAspectFill
+        }
+    }
+    
         }
     }
 
     // MARK: Props (private)
     
-    private var imageView = UIImageView()
-    private var contentView = UIStackView()
-    private var supertitleLabel = UILabel()
-    private var titleLabel = UILabel()
+    private let imageView = UIImageView()
+    private let contentView = UIStackView()
+    private let supertitleLabel = UILabel()
+    private let titleLabel = UILabel()
+    private let gradientView = UIView()
+    private let gradientLayer = CAGradientLayer()
 
     // MARK: Life cycle
     
@@ -54,18 +54,31 @@ class DetailHeaderView: UIView {
     }
     
     private func setup() {
-        backgroundColor = .secondarySystemBackground
+        backgroundColor = .black
 
         addImageView()
+        addGradientView()
         addContentView()
         addSupertitleLabel()
         addTitleLabel()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        gradientLayer.frame = gradientView.bounds
+    }
+    
+    // MARK: Subviews
+    
     private func addImageView() {
-        imageView.contentMode = .scaleAspectFill
+        let symbolConfiguration = UIImage.SymbolConfiguration(
+            pointSize: 100, weight: .regular, scale: .large
+        )
+        let image = UIImage(systemName: "wineglass", withConfiguration: symbolConfiguration)
+        imageView.image = image
+        imageView.contentMode = .center
+        imageView.clipsToBounds = true
         addSubview(imageView)
-        imageView.anchorHeight(Metric.imageViewHeight)
         imageView.anchorFill()
     }
     
@@ -74,21 +87,36 @@ class DetailHeaderView: UIView {
         contentView.axis = .vertical
         contentView.distribution = .fill
         contentView.isLayoutMarginsRelativeArrangement = true
-        contentView.layoutMargins = .init(all: .paddingM)
+        contentView.layoutMargins = .init(bottom: .paddingM, left: .padding, right: .padding)
         addSubview(contentView)
         contentView.anchorEdges([.bottom, .left, .right])
     }
     
     private func addSupertitleLabel() {
         supertitleLabel.text = "Supertitle".uppercased()
-        supertitleLabel.font = .preferredFont(forTextStyle: .caption1)
-        supertitleLabel.alpha = 0.3
+        supertitleLabel.textColor = .white.withAlphaComponent(0.5)
+        supertitleLabel.font = .systemFont(ofSize: 14, weight: .bold)
         contentView.addArrangedSubview(supertitleLabel)
+        contentView.setCustomSpacing(0, after: supertitleLabel)
     }
     
     private func addTitleLabel() {
         titleLabel.text = "Title"
-        titleLabel.font = .preferredFont(forTextStyle: .headline)
+        titleLabel.textColor = .white
+        titleLabel.font = .systemFont(ofSize: 38, weight: .bold)
+        titleLabel.numberOfLines = 0
         contentView.addArrangedSubview(titleLabel)
+    }
+    
+    private func addGradientView() {
+        let color = UIColor.black
+        gradientLayer.colors = [color.withAlphaComponent(0).cgColor, color.cgColor]
+        gradientLayer.locations = [0.0, 1.0]
+
+        gradientView.layer.addSublayer(gradientLayer)
+        addSubview(gradientView)
+        gradientView.anchorHeight(200)
+        gradientView.anchorEdges([.bottom, .left, .right])
+        layoutIfNeeded()
     }
 }
