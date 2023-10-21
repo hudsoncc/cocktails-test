@@ -25,6 +25,7 @@ extension API.Model {
         var strInstructions: String?
         var strTags: String?
         var strImageSource: String?
+        var strDrinkThumb: String?
         var strVideo: String?
         var strIngredient1: String?
         var strIngredient2: String?

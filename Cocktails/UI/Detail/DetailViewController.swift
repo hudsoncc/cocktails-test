@@ -50,7 +50,17 @@ class DetailViewController: UIViewController {
         ui.headerView.supertitle = viewModel.strings.cocktails
         ui.headerView.title = drink.name
         ui.headerView.tags = drink.tags
+        ui.headerView.onTap = { [weak self] in
+            self?.openImageInBrowser()
+        }
     }
+    
+    private func openImageInBrowser() {
+        guard let imageLink = viewModel.drink.thumbLink else { return }
+        guard let url = URL(string: imageLink), UIApplication.shared.canOpenURL(url) else { return }
+        UIApplication.shared.open(url)
+    }
+}
 
 extension DetailViewController: UITableViewDataSource {
     

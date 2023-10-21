@@ -22,7 +22,7 @@ class DetailHeaderView: UIView {
             titleLabel.text = title
         }
     }
-        
+    
     public var image: UIImage?  {
         didSet {
             imageView.image = image
@@ -36,7 +36,9 @@ class DetailHeaderView: UIView {
             tagView.tags = tags
         }
     }
-
+    
+    public var onTap: (()->())?
+    
     // MARK: Props (private)
     
     private let imageView = UIImageView()
@@ -45,7 +47,8 @@ class DetailHeaderView: UIView {
     private let titleLabel = UILabel()
     private let gradientView = UIView()
     private let gradientLayer = CAGradientLayer()
-
+    private let actionButton = UIButton()
+    
     private lazy var tagView: TagView = {
         let tagView = TagView()
         tagView.tagColor = .white.withAlphaComponent(0.2)
@@ -68,12 +71,13 @@ class DetailHeaderView: UIView {
     
     private func setup() {
         backgroundColor = .black
-
+        
         addImageView()
         addGradientView()
         addContentView()
         addSupertitleLabel()
         addTitleLabel()
+        addActionButton()
     }
     
     override func layoutSubviews() {
@@ -125,11 +129,21 @@ class DetailHeaderView: UIView {
         let color = UIColor.black
         gradientLayer.colors = [color.withAlphaComponent(0).cgColor, color.cgColor]
         gradientLayer.locations = [0.0, 1.0]
-
+        
         gradientView.layer.addSublayer(gradientLayer)
         addSubview(gradientView)
         gradientView.anchorHeight(200)
         gradientView.anchorEdges([.bottom, .left, .right])
         layoutIfNeeded()
+    }
+    
+    private func addActionButton() {
+        actionButton.addTarget(self, action: #selector(actionButtonWasTapped), for: .touchUpInside)
+        addSubview(actionButton)
+        actionButton.anchorFill()
+    }
+    
+    @objc private func actionButtonWasTapped() {
+        onTap?()
     }
 }

@@ -3,6 +3,7 @@
     <entity name="Drink" representedClassName="Drink" syncable="YES" codeGenerationType="class">
         <attribute name="idDrink" optional="YES" attributeType="String"/>
         <attribute name="strDrink" optional="YES" attributeType="String"/>
+        <attribute name="strDrinkThumb" optional="YES" attributeType="String"/>
         <attribute name="strImageSource" optional="YES" attributeType="String"/>
         <attribute name="strIngredient1" optional="YES" attributeType="String"/>
         <attribute name="strIngredient2" optional="YES" attributeType="String"/>

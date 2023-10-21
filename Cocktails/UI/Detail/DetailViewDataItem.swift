@@ -12,6 +12,7 @@ protocol DetailViewDataViewModel {
     
     var name: String {get}
     var imageLink: String? {get}
+    var thumbLink: String? {get}
     var videoLink: String? {get}
     var tags: [String] {get}
     var ingredients: [String] {get}
@@ -28,6 +29,7 @@ class DetailViewDataItem: DetailViewDataViewModel {
    
     public var name: String { drink.strDrink ?? "" }
     public var imageLink: String? { drink.strImageSource }
+    public var thumbLink: String? { drink.strDrinkThumb }
     public var videoLink: String? { drink.strVideo }
     public var tags: [String] { drink.tags }
     public var ingredients: [String] { drink.ingredients }
