@@ -12,7 +12,6 @@ class DetailViewUI: NSObject {
     // MARK: Enums
     
     enum Section: Int, CaseIterable {
-        case tags
         case ingredients
         case instructions
         

@@ -47,7 +47,6 @@ extension DetailViewController: UITableViewDataSource {
         let section = DetailViewUI.Section(rawValue: indexPath.section)!
         
         switch section {
-        case .tags: break
         case .ingredients: break
         case .instructions: break
         }

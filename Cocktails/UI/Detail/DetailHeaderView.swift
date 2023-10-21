@@ -30,6 +30,10 @@ class DetailHeaderView: UIView {
         }
     }
     
+    public var tags: [String] = []  {
+        didSet {
+            guard !tags.isEmpty else { return }
+            tagView.tags = tags
         }
     }
 
@@ -42,6 +46,15 @@ class DetailHeaderView: UIView {
     private let gradientView = UIView()
     private let gradientLayer = CAGradientLayer()
 
+    private lazy var tagView: TagView = {
+        let tagView = TagView()
+        tagView.tagColor = .white.withAlphaComponent(0.2)
+        tagView.tagTextColor = .white
+        contentView.addArrangedSubview(tagView)
+        tagView.anchorMinimumHeight(24)
+        return tagView
+    }()
+    
     // MARK: Life cycle
     
     override init(frame: CGRect) {
