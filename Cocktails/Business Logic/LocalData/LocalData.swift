@@ -34,6 +34,10 @@ class LocalData: NSObject {
         coreData.fetchObjects(in: context)
     }
     
+    public func fetchDrink(byID id: String, context: NSManagedObjectContext? = nil) -> Drink? {
+        coreData.fetchObject(byKey: #keyPath(Drink.idDrink), value: id)
+    }
+    
     public func saveDrinks(from drinkDictionaries: [[String:Any?]]?) {
         let idKey = #keyPath(Drink.idDrink)
         coreData.saveObjects(ofType: Drink.self, from: drinkDictionaries, idKey: idKey)

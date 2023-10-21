@@ -129,6 +129,25 @@ class CoreDataStack: NSObject {
     
     // MARK: Fetch
 
+    func fetchObject<T:NSManagedObject>(byKey key: String, value: String, in context: NSManagedObjectContext? = nil) -> T? {
+        let context = context ?? viewContext
+        let entityName = String(describing: T.self)
+        let request: NSFetchRequest<T> = NSFetchRequest(entityName: entityName)
+        
+        let predicate = NSPredicate(format: "%K == %@", key, value)
+        request.predicate = predicate
+        
+        var result: T?
+        context.performAndWait {
+            do {
+                result = try context.fetch(request).first
+            } catch {
+                debugPrint("Failed to fetch \(T.self): \(error)")
+            }
+        }
+       return result
+    }
+    
     func fetchObjects<T:NSManagedObject>(predicate: NSPredicate? = nil, in context: NSManagedObjectContext? = nil) -> [T] {
         let context = context ?? viewContext
         let entityName = String(describing: T.self)

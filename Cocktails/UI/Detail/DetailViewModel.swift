@@ -12,5 +12,28 @@ class DetailViewModel: ViewModel {
     // MARK: Props (public)
     
     public let strings = Strings.DetailView()
-   
+    @Published public var drink: DetailViewDataItem!
+
+    // MARK: Life cycle
+    
+    convenience init(drinkID: String, coordinator: ViewCoordinator) {
+        self.init(coordinator: coordinator)
+        self.fetchDrink(withID: drinkID)
+    }
+
+    // MARK: Fetch
+
+    private func fetchDrink(withID drinkID: String) {
+        guard let drink = LocalData.shared.fetchDrink(byID: drinkID) else {
+            navigateBack()
+            return
+        }
+        self.drink = DetailViewDataItem(drink: drink)
+    }
+    
+    // MARK: Navigation
+
+    private func navigateBack() {
+        coordinator.navigateBack()
+    }
 }

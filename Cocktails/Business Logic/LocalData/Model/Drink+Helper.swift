@@ -9,6 +9,25 @@ import Foundation
 
 extension Drink {
     
+    public var tags: [String] {
+        strTags?.components(separatedBy: ",") ?? []
+    }
+
+    public var ingredients: [String] {
+        let baseKey = "strIngredient"
+        var ingredients = [String]()
+        
+        for i in 1...15 {
+            let key = "\(baseKey)\(i)"
+            if let anIngredient = value(forKey: key) as? String {
+                ingredients.append(anIngredient)
+            } else {
+                break
+            }
+        }
+        return ingredients
+    }
+    
     // Search
     
     static let searchSubstituteKey: String = "query"
