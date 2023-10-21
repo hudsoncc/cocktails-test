@@ -46,6 +46,10 @@ class DetailViewController: UIViewController {
     
     private func update(drink: DetailViewDataItem) {
         ui.tableView.reloadData()     
+        
+        ui.headerView.supertitle = viewModel.strings.cocktails
+        ui.headerView.title = drink.name
+        ui.headerView.tags = drink.tags
     }
 
 extension DetailViewController: UITableViewDataSource {
