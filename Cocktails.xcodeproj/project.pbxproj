@@ -19,6 +19,8 @@
 		7A2CBF762AE3D1D5009995CF /* UIEdgeInsets+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2CBF752AE3D1D5009995CF /* UIEdgeInsets+Additions.swift */; };
 		7A2CBF782AE3F99D009995CF /* DetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2CBF772AE3F99D009995CF /* DetailViewCell.swift */; };
 		7A2CBF7C2AE40F7C009995CF /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2CBF7B2AE40F7C009995CF /* TagView.swift */; };
+		7A2CBF7E2AE46ECB009995CF /* SFSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2CBF7D2AE46ECB009995CF /* SFSymbols.swift */; };
+		7A2CBF812AE555BA009995CF /* VibrancyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2CBF802AE555BA009995CF /* VibrancyButton.swift */; };
 		7AD9AF332AE192840010A141 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF322AE192840010A141 /* AppDelegate.swift */; };
 		7AD9AF352AE192840010A141 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF342AE192840010A141 /* SceneDelegate.swift */; };
 		7AD9AF372AE192840010A141 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF362AE192840010A141 /* SearchViewController.swift */; };
@@ -77,6 +79,8 @@
 		7A2CBF752AE3D1D5009995CF /* UIEdgeInsets+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Additions.swift"; sourceTree = "<group>"; };
 		7A2CBF772AE3F99D009995CF /* DetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewCell.swift; sourceTree = "<group>"; };
 		7A2CBF7B2AE40F7C009995CF /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		7A2CBF7D2AE46ECB009995CF /* SFSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbols.swift; sourceTree = "<group>"; };
+		7A2CBF802AE555BA009995CF /* VibrancyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrancyButton.swift; sourceTree = "<group>"; };
 		7AD9AF2F2AE192840010A141 /* Cocktails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cocktails.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AD9AF322AE192840010A141 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AD9AF342AE192840010A141 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +149,14 @@
 				7A2CBF772AE3F99D009995CF /* DetailViewCell.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		7A2CBF7F2AE55506009995CF /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				7A2CBF802AE555BA009995CF /* VibrancyButton.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 		7AD9AF262AE192840010A141 = {
@@ -240,6 +252,7 @@
 				7AD9AF842AE1DED20010A141 /* NSObject+Debounce.swift */,
 				7A2CBF652AE2EF87009995CF /* UITableViewCell+ID.swift */,
 				7A2CBF752AE3D1D5009995CF /* UIEdgeInsets+Additions.swift */,
+				7A2CBF7D2AE46ECB009995CF /* SFSymbols.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -247,6 +260,7 @@
 		7AD9AF7C2AE1C2EB0010A141 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				7A2CBF7F2AE55506009995CF /* Buttons */,
 				7AD9AF7F2AE1C30B0010A141 /* Views */,
 			);
 			path = Components;
@@ -451,6 +465,7 @@
 				7A2CBF722AE33030009995CF /* DetailViewDataItem.swift in Sources */,
 				7AD9AF6B2AE1A1E60010A141 /* SearchViewModel.swift in Sources */,
 				7AD9AF9C2AE2A06D0010A141 /* DictionaryRepresentable.swift in Sources */,
+				7A2CBF7E2AE46ECB009995CF /* SFSymbols.swift in Sources */,
 				7AD9AF792AE1B40F0010A141 /* Strings.swift in Sources */,
 				7AD9AF372AE192840010A141 /* SearchViewController.swift in Sources */,
 				7A2CBF6E2AE320BF009995CF /* DetailViewModel.swift in Sources */,
@@ -472,6 +487,7 @@
 				7AD9AF902AE1EE190010A141 /* API+Model.swift in Sources */,
 				7AD9AF8C2AE1E6310010A141 /* NetworkOperation.swift in Sources */,
 				7AD9AF7E2AE1C3050010A141 /* EmptyDatasetView.swift in Sources */,
+				7A2CBF812AE555BA009995CF /* VibrancyButton.swift in Sources */,
 				7AD9AF3D2AE192840010A141 /* Cocktails.xcdatamodeld in Sources */,
 				7AD9AF8E2AE1E64E0010A141 /* NetworkQueue.swift in Sources */,
 				7AD9AF9F2AE2A9480010A141 /* CoreDataStack.swift in Sources */,

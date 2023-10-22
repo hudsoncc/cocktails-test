@@ -31,6 +31,10 @@ class DetailViewUI: NSObject {
 
     private(set) var tableView = UITableView(frame: .zero, style: .plain)
     private(set) var headerView = DetailHeaderView()
+    
+    lazy public var videoButton: UIBarButtonItem = {
+        addVideoButtonIfNeeded()
+    }()
 
     // MARK: Props (private)
     
@@ -51,6 +55,14 @@ class DetailViewUI: NSObject {
         
         addTableView()
         addHeaderView()
+    
+    private func addVideoButtonIfNeeded() -> UIBarButtonItem {
+        let action = #selector(viewController.openVideoInBrowser)
+        videoButton = VibrancyBarButtonItem(
+            symbol: "play.fill", target: viewController, action: action
+        )
+        viewController.navigationItem.setRightBarButton(videoButton, animated: true)
+        return videoButton
     }
     
     // MARK: Subviews

@@ -53,11 +53,27 @@ class DetailViewController: UIViewController {
         ui.headerView.onTap = { [weak self] in
             self?.openImageInBrowser()
         }
+        
+        if drink.hasVideo {
+            ui.videoButton.isEnabled = true
+        }
+        
     }
     
+    // MARK: Actions
+
     private func openImageInBrowser() {
-        guard let imageLink = viewModel.drink.thumbLink else { return }
-        guard let url = URL(string: imageLink), UIApplication.shared.canOpenURL(url) else { return }
+        openBrowser(withLink: viewModel.drink.thumbLink)
+    }
+        
+    @objc public func openVideoInBrowser() {
+        openBrowser(withLink: viewModel.drink.videoLink)
+    }
+    
+    private func openBrowser(withLink link: String?) {
+        guard let link, let url = URL(string: link), UIApplication.shared.canOpenURL(url) else {
+            return
+        }
         UIApplication.shared.open(url)
     }
 }

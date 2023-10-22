@@ -17,6 +17,8 @@ protocol DetailViewDataViewModel {
     var tags: [String] {get}
     var ingredients: [String] {get}
     var instructions: String {get}
+    var hasVideo: Bool {get}
+
 }
 
 class DetailViewDataItem: DetailViewDataViewModel {
@@ -34,5 +36,5 @@ class DetailViewDataItem: DetailViewDataViewModel {
     public var tags: [String] { drink.tags }
     public var ingredients: [String] { drink.ingredients }
     public var instructions: String { drink.strInstructions ?? "" }
-    
+    public var hasVideo: Bool { imageLink != nil }
 }
