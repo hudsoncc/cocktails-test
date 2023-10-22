@@ -30,7 +30,11 @@ class DetailViewController: UIViewController {
     
     private func loadUI() {
         ui = DetailViewUI(for: self)
-        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        ui.navigationBar.prefersTransparentBackground = false
     }
     
     private func bindToModel() {

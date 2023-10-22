@@ -21,6 +21,7 @@
 		7A2CBF7C2AE40F7C009995CF /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2CBF7B2AE40F7C009995CF /* TagView.swift */; };
 		7A2CBF7E2AE46ECB009995CF /* SFSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2CBF7D2AE46ECB009995CF /* SFSymbols.swift */; };
 		7A2CBF812AE555BA009995CF /* VibrancyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2CBF802AE555BA009995CF /* VibrancyButton.swift */; };
+		7A2CBF832AE567C0009995CF /* UINavigationBar+Transparency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2CBF822AE567C0009995CF /* UINavigationBar+Transparency.swift */; };
 		7AD9AF332AE192840010A141 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF322AE192840010A141 /* AppDelegate.swift */; };
 		7AD9AF352AE192840010A141 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF342AE192840010A141 /* SceneDelegate.swift */; };
 		7AD9AF372AE192840010A141 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF362AE192840010A141 /* SearchViewController.swift */; };
@@ -81,6 +82,7 @@
 		7A2CBF7B2AE40F7C009995CF /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		7A2CBF7D2AE46ECB009995CF /* SFSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbols.swift; sourceTree = "<group>"; };
 		7A2CBF802AE555BA009995CF /* VibrancyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrancyButton.swift; sourceTree = "<group>"; };
+		7A2CBF822AE567C0009995CF /* UINavigationBar+Transparency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Transparency.swift"; sourceTree = "<group>"; };
 		7AD9AF2F2AE192840010A141 /* Cocktails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cocktails.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AD9AF322AE192840010A141 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AD9AF342AE192840010A141 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				7A2CBF652AE2EF87009995CF /* UITableViewCell+ID.swift */,
 				7A2CBF752AE3D1D5009995CF /* UIEdgeInsets+Additions.swift */,
 				7A2CBF7D2AE46ECB009995CF /* SFSymbols.swift */,
+				7A2CBF822AE567C0009995CF /* UINavigationBar+Transparency.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 				7AD9AF7B2AE1B8290010A141 /* UIView+Anchors.swift in Sources */,
 				7A2CBF622AE2E5A4009995CF /* SearchViewDataItem.swift in Sources */,
 				7A2CBF782AE3F99D009995CF /* DetailViewCell.swift in Sources */,
+				7A2CBF832AE567C0009995CF /* UINavigationBar+Transparency.swift in Sources */,
 				7AD9AF722AE1A6310010A141 /* ViewModel.swift in Sources */,
 				7AD9AF6D2AE1A5070010A141 /* ViewCoordinator.swift in Sources */,
 			);

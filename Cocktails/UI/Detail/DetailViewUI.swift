@@ -27,6 +27,10 @@ class DetailViewUI: NSObject {
         static let estimatedRowHeight: CGFloat = 88
     }
     
+    public var navigationBar: UINavigationBar { 
+        viewController.navigationController!.navigationBar
+    }
+
     // MARK: Props (public)
 
     private(set) var tableView = UITableView(frame: .zero, style: .plain)
@@ -52,7 +56,8 @@ class DetailViewUI: NSObject {
     
     private func setup() {
         view.backgroundColor = .systemBackground
-        
+        navigationBar.prefersTransparentBackground = true
+
         addTableView()
         addHeaderView()
         addBackButton()
