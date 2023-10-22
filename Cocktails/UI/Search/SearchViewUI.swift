@@ -23,7 +23,10 @@ class SearchViewUI: NSObject {
     
     private var view: UIView { viewController.view }
     private var viewController: SearchViewController!
-
+    public var navigationBar: UINavigationBar {
+        viewController.navigationController!.navigationBar
+    }
+    
     // MARK: Life cycle
     
     convenience init(for viewController: SearchViewController) {
@@ -35,6 +38,7 @@ class SearchViewUI: NSObject {
     
     private func setup() {
         view.backgroundColor = .systemBackground
+        navigationBar.prefersLargeTitles = true
         
         addSearchController()
         addTableView()
