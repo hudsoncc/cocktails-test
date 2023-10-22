@@ -80,8 +80,9 @@ extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchViewCell.cellID, for: indexPath) as! SearchViewCell
         
-        let drink = viewModel.drink(at: indexPath.row, isSearching: isSearching)
-        cell.configure(for: drink)
+        if let drink = viewModel.drink(at: indexPath.row, isSearching: isSearching) {
+            cell.configure(for: drink)
+        }
         
         return cell
     }
@@ -93,7 +94,9 @@ extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let drink = viewModel.drink(at: indexPath.row, isSearching: isSearching)
+        guard let drink = viewModel.drink(at: indexPath.row, isSearching: isSearching) else {
+            return
+        }
         viewModel.showDetails(forDrink: drink)
     }
 }

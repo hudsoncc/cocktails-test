@@ -33,8 +33,13 @@ class SearchViewModel: ViewModel {
     
     // MARK: Data
     
-    public func drink(at index: Int, isSearching: Bool) -> SearchViewDataItem {
-        isSearching ? searchResults[index] : drinks[index]
+    public func drink(at index: Int, isSearching: Bool) -> SearchViewDataItem? {
+        let items = isSearching ? searchResults : drinks
+        
+        guard index < items.count else {
+            return nil
+        }
+        return items[index]
     }
     
     public func drinksCount(isSearching: Bool) -> Int {
