@@ -76,6 +76,10 @@ class DetailViewController: UIViewController {
         }
         UIApplication.shared.open(url)
     }
+    
+    @objc public func goBack() {
+        viewModel.navigateBack()
+    }
 }
 
 extension DetailViewController: UITableViewDataSource {

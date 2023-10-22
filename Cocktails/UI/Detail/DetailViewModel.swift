@@ -33,7 +33,7 @@ class DetailViewModel: ViewModel {
     
     // MARK: Navigation
 
-    private func navigateBack() {
+    public func navigateBack() {
         coordinator.navigateBack()
     }
 }

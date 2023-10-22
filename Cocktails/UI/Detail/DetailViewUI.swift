@@ -55,6 +55,16 @@ class DetailViewUI: NSObject {
         
         addTableView()
         addHeaderView()
+        addBackButton()
+    }
+    
+    private func addBackButton() {
+        let action = #selector(viewController.goBack)
+        let buttonItem = VibrancyBarButtonItem(
+            symbol: "chevron.backward", target: viewController, action: action
+        )
+        viewController.navigationItem.leftBarButtonItem = buttonItem
+    }
     
     private func addVideoButtonIfNeeded() -> UIBarButtonItem {
         let action = #selector(viewController.openVideoInBrowser)
