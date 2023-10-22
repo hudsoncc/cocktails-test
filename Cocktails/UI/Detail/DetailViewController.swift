@@ -119,3 +119,13 @@ extension DetailViewController: UITableViewDataSource {
     }
     
 }
+
+extension DetailViewController: UITableViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        ui.headerView.zoomImageForChange(inScrollView: scrollView)
+    }
+    
+}
+
+

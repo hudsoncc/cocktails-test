@@ -265,13 +265,15 @@ extension UIView {
         widthAnchor.constraint(lessThanOrEqualTo: targetView.widthAnchor, multiplier: percentage).isActive = true
     }
     
-    public func anchorToHeight(insetBy: CGFloat = 0) {
+    @discardableResult public func anchorToHeight(insetBy: CGFloat = 0) -> NSLayoutConstraint {
         anchorToHeight(ofView: superview!, insetBy: insetBy)
     }
     
-    public func anchorToHeight(ofView targetView: UIView, insetBy: CGFloat = 0) {
+    @discardableResult public func anchorToHeight(ofView targetView: UIView, insetBy: CGFloat = 0) -> NSLayoutConstraint {
         translatesAutoresizingMaskIntoConstraints = false
-        heightAnchor.constraint(equalTo: targetView.heightAnchor, constant: -insetBy).isActive = true
+        let c = heightAnchor.constraint(equalTo: targetView.heightAnchor, constant: -insetBy)
+        c.isActive = true
+        return c
     }
     
     

@@ -41,6 +41,7 @@ class DetailHeaderView: UIView {
     
     // MARK: Props (private)
     
+    private let imageContainerView = UIView()
     private let imageView = UIImageView()
     private let contentView = UIStackView()
     private let supertitleLabel = UILabel()
@@ -58,6 +59,9 @@ class DetailHeaderView: UIView {
         return tagView
     }()
     
+    private var imageContainerTopConstraint = NSLayoutConstraint()
+    private var imageContainerHeightConstraint = NSLayoutConstraint()
+    
     // MARK: Life cycle
     
     override init(frame: CGRect) {
@@ -71,7 +75,7 @@ class DetailHeaderView: UIView {
     
     private func setup() {
         backgroundColor = .black
-        
+        addImageContainerView()
         addImageView()
         addGradientView()
         addContentView()
@@ -84,19 +88,24 @@ class DetailHeaderView: UIView {
         super.layoutSubviews()
         gradientLayer.frame = gradientView.bounds
     }
-    
+   
     // MARK: Subviews
     
+    private func addImageContainerView() {
+        imageContainerView.clipsToBounds = true
+        addSubview(imageContainerView)
+        imageContainerView.anchorEdges([.left,.right])
+        imageContainerTopConstraint = imageContainerView.anchorEdges([.top]).first!
+        imageContainerHeightConstraint = imageContainerView.anchorToHeight()
+    }
+    
     private func addImageView() {
-        let symbolConfiguration = UIImage.SymbolConfiguration(
-            pointSize: 100, weight: .regular, scale: .large
-        )
-        let image = UIImage(systemName: "wineglass", withConfiguration: symbolConfiguration)
-        imageView.image = image
-        imageView.contentMode = .center
-        imageView.clipsToBounds = true
-        addSubview(imageView)
-        imageView.anchorFill()
+        imageView.image = UIImage(symbol: "wineglass", size: 100, scale: .large)
+        imageView.contentMode = .scaleAspectFill
+        imageView.backgroundColor = .black
+        imageContainerView.addSubview(imageView)
+        imageView.anchorEdges([.top, .left, .right])
+        imageView.anchorToHeight()
     }
     
     private func addContentView() {
@@ -106,7 +115,7 @@ class DetailHeaderView: UIView {
         contentView.isLayoutMarginsRelativeArrangement = true
         contentView.layoutMargins = .init(bottom: .paddingM, left: .padding, right: .padding)
         addSubview(contentView)
-        contentView.anchorEdges([.bottom, .left, .right])
+        contentView.anchorEdges([.left, .bottom, .right])
     }
     
     private func addSupertitleLabel() {
@@ -146,4 +155,20 @@ class DetailHeaderView: UIView {
     @objc private func actionButtonWasTapped() {
         onTap?()
     }
+    
+    // MARK: Image zoom on scroll
+    
+    public func zoomImageForChange(inScrollView scrollView: UIScrollView) {
+        let newTopInset = scrollView.contentInset.top
+        let newOffsetY = -(scrollView.contentOffset.y + newTopInset)
+        let newHeight = max(newOffsetY + newTopInset, newTopInset)
+        
+        
+        if scrollView.contentOffset.y < 0 {
+            imageContainerTopConstraint.constant = -newOffsetY
+            imageContainerHeightConstraint.constant = newHeight
+        }
+    }
+
+
 }

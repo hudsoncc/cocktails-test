@@ -79,6 +79,7 @@ class DetailViewUI: NSObject {
     
     private func addTableView() {
         tableView.dataSource = viewController
+        tableView.delegate = viewController
         tableView.estimatedRowHeight = Metric.estimatedRowHeight
         tableView.rowHeight = UITableView.automaticDimension
         tableView.allowsSelection = false
