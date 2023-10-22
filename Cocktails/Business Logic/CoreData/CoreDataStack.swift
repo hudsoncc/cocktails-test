@@ -123,7 +123,13 @@ class CoreDataStack: NSObject {
                                                  using dictionary: [String: Any?]) {
         dictionary.keys.forEach { key in
             let value = dictionary[key]
-            managedObject.setValue(value as Any?, forKey: key)
+            /**
+             NOTE: For the scope of this exercise, I only need to support mapping string
+             values here, so I'm only casting as `NSString`. This key-value mapping can
+             easily be extended to support other reference types, like `NSDate` for
+             example, if I needed to persist date strings from the API as date objects.
+            **/
+            managedObject.setValue(value as? NSString, forKey: key)
         }
     }
     
