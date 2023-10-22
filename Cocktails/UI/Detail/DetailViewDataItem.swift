@@ -36,5 +36,5 @@ class DetailViewDataItem: DetailViewDataViewModel {
     public var tags: [String] { drink.tags }
     public var ingredients: [String] { drink.ingredients }
     public var instructions: String { drink.strInstructions ?? "" }
-    public var hasVideo: Bool { imageLink != nil }
+    public var hasVideo: Bool { videoLink != nil }
 }
