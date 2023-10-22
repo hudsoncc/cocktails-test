@@ -93,6 +93,7 @@ class SearchViewModel: ViewModel {
     private func saveDrinks(_ drinks: API.Model.Drinks) {
         let drinkDictionaries = drinks.drinks?.map { $0.dictionaryRepresentation() }
         LocalData.shared.saveDrinks(from: drinkDictionaries)
+        fetchAllDrinks()
     }
     
     // MARK: Navigation
