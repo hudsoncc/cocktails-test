@@ -103,6 +103,7 @@ class DetailHeaderView: UIView {
         imageView.image = UIImage(symbol: "wineglass", size: 100, scale: .large)
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .black
+        imageView.tintColor = .white
         imageContainerView.addSubview(imageView)
         imageView.anchorEdges([.top, .left, .right])
         imageView.anchorToHeight()

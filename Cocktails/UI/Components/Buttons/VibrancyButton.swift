@@ -33,7 +33,7 @@ class VibrancyButton: UIButton {
     }
     
     private func addVibrancyView() {
-        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
+        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterial)
         let vibrancyView = UIVisualEffectView(effect: blurEffect)
         vibrancyView.isUserInteractionEnabled = false
         insertSubview(vibrancyView, belowSubview: imageView!)

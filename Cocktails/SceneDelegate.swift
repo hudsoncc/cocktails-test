@@ -38,6 +38,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: scene.coordinateSpace.bounds)
         window?.windowScene = scene
         addViewCoordinator(for: window)
+        
+        UIControl.appearance().tintColor = .label
+        UIView.appearance().tintColor = .label
     }
     
     private func addViewCoordinator(for window: UIWindow?) {
