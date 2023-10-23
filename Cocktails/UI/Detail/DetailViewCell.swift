@@ -16,9 +16,6 @@ class DetailViewCell: UITableViewCell {
     private let symbolView = UIImageView()
     private let titleLabel = UILabel()
     private let infoLabel = UILabel()
-    private let symbolConfig = UIImage.SymbolConfiguration(
-        pointSize: 26, weight: .regular, scale: .large
-    )
     
     // MARK: Life cycle
     
@@ -77,7 +74,7 @@ class DetailViewCell: UITableViewCell {
     // MARK: Configure
     
     public func configure(title: String, info: String, symbol: String) {
-        let image = UIImage(systemName: symbol, withConfiguration: symbolConfig)
+        let image = UIImage(symbol: symbol, size: 26, weight: .regular, scale: .large)
         symbolView.image = image
         titleLabel.text = title
         infoLabel.text = info
