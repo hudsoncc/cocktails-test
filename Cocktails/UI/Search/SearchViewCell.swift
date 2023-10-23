@@ -8,7 +8,7 @@
 import UIKit
 
 class SearchViewCell: UITableViewCell {
-    
+
     // MARK: Props (private)
     
     private let containerView = UIStackView()
@@ -31,7 +31,12 @@ class SearchViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        configure(forImageData: nil)
+    }
+    
     private func setup() {
         addContainerView()
         addSymbolView()
@@ -88,5 +93,21 @@ class SearchViewCell: UITableViewCell {
         titleLabel.text = dataItem.name
         infoLabel.text = dataItem.instructions
          
+        if let imageData = dataItem.thumbData {
+            configure(forImageData: imageData)
+        }
     }
+    
+    public func configure(forImageData imageData: Data?) {
+        guard let imageData else {
+            symbolView.contentMode = .center
+            symbolView.image = placeHolderImage
+            return
+        }
+    
+        symbolView.contentMode = .scaleAspectFit
+        symbolView.image = UIImage(data: imageData)
+    }
+        
 }
+

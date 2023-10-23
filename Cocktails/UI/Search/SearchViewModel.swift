@@ -20,6 +20,7 @@ class SearchViewModel: ViewModel {
     public let strings = Strings.SearchView()
     @Published public var drinks = [SearchViewDataItem]()
     @Published public var searchResults = [SearchViewDataItem]()
+    @Published public var fetchedImageAvailableForDrink: SearchViewDataItem?
     public var sectionIndexTitles = [String]()
     public var groupedDrinks = [String: [SearchViewDataItem]]()
 
@@ -27,6 +28,7 @@ class SearchViewModel: ViewModel {
     
     private var currentSearchQuery: String?
     private var api = API()
+    private var imageLoader = WebImageLoader()
 
     override init(coordinator: ViewCoordinator) {
         super.init(coordinator: coordinator)
@@ -36,14 +38,35 @@ class SearchViewModel: ViewModel {
     // MARK: Data
     
     public func drink(at indexPath: IndexPath, isSearching: Bool) -> SearchViewDataItem? {
+        var drink: SearchViewDataItem?
+        
         if isSearching {
-            return indexPath.row < searchResults.count ? searchResults[indexPath.row] : nil
+            drink = indexPath.row < searchResults.count ? searchResults[indexPath.row] : nil
         }
-
-        let sectionTitle = sectionIndexTitles[indexPath.section]
-        guard let drinksForSection = groupedDrinks[sectionTitle] else { return nil }
-
-        return indexPath.row < drinksForSection.count ? drinksForSection[indexPath.row] : nil
+        else {
+            let sectionTitle = sectionIndexTitles[indexPath.section]
+            guard let drinksForSection = groupedDrinks[sectionTitle] else { return nil }
+            drink = indexPath.row < drinksForSection.count ? drinksForSection[indexPath.row] : nil
+        }
+        
+        loadOrFetchImageIfNeeded(forDrink: drink)
+        
+        return drink
+    }
+    
+    public func indexPath(forDrink drink: SearchViewDataItem, isSearching: Bool) -> IndexPath? {
+        if isSearching {
+            if let drinkIndex = searchResults.firstIndex(where: { $0.id == drink.id }) {
+                return IndexPath(row: drinkIndex, section: 0)
+            }
+        }
+  
+        let sectionKey = sectionTitle(forDrink: drink)
+        if let drinkSection = Array(groupedDrinks.keys).firstIndex(of: sectionKey),
+           let drinkIndex = groupedDrinks[sectionKey]?.firstIndex(where: { $0.id == drink.id } ) {
+            return IndexPath(row: drinkIndex, section: drinkSection)
+        }
+        return nil
     }
     
     public func titleForHeader(at section: Int, isSearching: Bool) -> String? {
@@ -52,6 +75,10 @@ class SearchViewModel: ViewModel {
     
     public func sectionIndexTitles(isSearching: Bool) -> [String]? {
         isSearching ? nil : sectionIndexTitles
+    }
+    
+    public func sectionTitle(forDrink drink: SearchViewDataItem) -> String {
+        drink.name.prefix(1).uppercased()
     }
     
     public func numberOfSections(isSearching: Bool) -> Int {
@@ -85,7 +112,7 @@ class SearchViewModel: ViewModel {
     public func fetchAllDrinks() {
         let data = LocalData.shared.fetchDrinks()
         let drinks = data.map { SearchViewDataItem(drink: $0) }
-        groupedDrinks = Dictionary(grouping: drinks, by: { $0.name.prefix(1).uppercased() })
+        groupedDrinks = Dictionary(grouping: drinks, by: { sectionTitle(forDrink: $0) })
         sectionIndexTitles = groupedDrinks.keys.sorted()
         
         self.drinks = drinks
@@ -119,6 +146,32 @@ class SearchViewModel: ViewModel {
         let drinkDictionaries = drinks.drinks?.map { $0.dictionaryRepresentation() }
         LocalData.shared.saveDrinks(from: drinkDictionaries)
         fetchAllDrinks()
+    }
+    
+    // MARK: Image Loading
+    
+    private func loadOrFetchImageIfNeeded(forDrink drink: SearchViewDataItem?) {
+        guard let drink, let thumbURL = drink.thumbURL, drink.thumbData == nil else {
+            return
+        }
+        
+        guard let imageData = imageLoader.loadImage(forURL: thumbURL) else {
+            fetchImage(forDrink: drink)
+            return
+        }
+        
+        drink.thumbData = imageData
+    }
+    
+    private func fetchImage(forDrink drink: SearchViewDataItem) {
+        Task {
+            let url = drink.thumbURL!
+            guard let imageData = try? await imageLoader.fetchImage(forURL: url) else {
+                return
+            }
+            drink.thumbData = imageData
+            fetchedImageAvailableForDrink = drink
+        }
     }
     
     // MARK: Navigation

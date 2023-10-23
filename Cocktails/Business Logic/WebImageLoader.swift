@@ -20,13 +20,18 @@ struct WebImageLoader {
         return data
     }
     
-    // MARK: API (private)
+    public func loadImage(forURL url: URL) -> Data? {
+        let cachedImagePath = cachedImagePath(forURL: url)
+        return try? Data(contentsOf: cachedImagePath)
+    }
     
-    private func fetchImage(forURL url: URL) async throws -> Data? {
+    public func fetchImage(forURL url: URL) async throws -> Data? {
         let (tempURL, _) = try await URLSession.shared.download(from: url, delegate: nil)
         try cacheImage(forURL: url, atTemporaryURL: tempURL)
         return try Data(contentsOf: url)
     }
+    
+    // MARK: API (private)    
     
     private func cacheImage(forURL url: URL, atTemporaryURL tempURL: URL) throws {
         let cachedImagePath = cachedImagePath(forURL: url)
@@ -39,11 +44,6 @@ struct WebImageLoader {
     private func cachedImagePath(forURL url: URL) -> URL {
         let filePath = fileManager.temporaryDirectory
         return filePath.appendingPathComponent( url.lastPathComponent, isDirectory: false)
-    }
-    
-    private func loadImage(forURL url: URL) -> Data? {
-        let cachedImagePath = cachedImagePath(forURL: url)
-        return try? Data(contentsOf: cachedImagePath)
     }
     
 }

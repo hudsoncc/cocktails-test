@@ -50,6 +50,13 @@ class SearchViewController: UIViewController {
             }
         })
         .store(in: &cancellables)
+        
+        viewModel.$fetchedImageAvailableForDrink.sink(receiveValue: { drink in
+            DispatchQueue.main.async { [weak self] in
+                self?.updateCellImage(forDrink: drink)
+            }
+        })
+        .store(in: &cancellables)
     }
 
     private func update() {
@@ -69,6 +76,15 @@ class SearchViewController: UIViewController {
         }
     }
    
+    private func updateCellImage(forDrink drink: SearchViewDataItem?) {
+        guard
+            let drink = drink,
+            let indexPathToUpdate = viewModel.indexPath(forDrink: drink, isSearching: isSearching),
+            let cellToUpdate = ui.tableView.cellForRow(at: indexPathToUpdate) as? SearchViewCell else {
+            return
+        }
+        cellToUpdate.configure(forImageData: drink.thumbData)
+    }
 }
 
 extension SearchViewController: UITableViewDataSource {
@@ -94,8 +110,7 @@ extension SearchViewController: UITableViewDataSource {
         
         if let drink = viewModel.drink(at: indexPath, isSearching: isSearching) {
             cell.configure(for: drink)
-        }
-        
+        }        
         return cell
     }
     
