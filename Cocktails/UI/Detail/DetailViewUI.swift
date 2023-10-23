@@ -27,8 +27,12 @@ class DetailViewUI: NSObject {
         static let estimatedRowHeight: CGFloat = 88
     }
     
-    public var navigationBar: UINavigationBar { 
-        viewController.navigationController!.navigationBar
+    public var navigationController: UINavigationController {
+        viewController.navigationController!
+    }
+    
+    public var navigationBar: UINavigationBar {
+        navigationController.navigationBar
     }
 
     // MARK: Props (public)
@@ -69,6 +73,13 @@ class DetailViewUI: NSObject {
             symbol: "chevron.backward", target: viewController, action: action
         )
         viewController.navigationItem.leftBarButtonItem = buttonItem
+        
+        /**
+         NOTE: Setting a custom back button disables the interactive pop gesture.
+         Setting the pop gesture recogniser's delegate to `nil` is a workaround
+         to restore it.
+        **/
+        navigationController.interactivePopGestureRecognizer?.delegate = nil
     }
     
     private func addVideoButtonIfNeeded() -> UIBarButtonItem {
