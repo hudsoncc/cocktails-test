@@ -11,9 +11,9 @@ protocol DetailViewDataViewModel {
     init(drink: Drink)
     
     var name: String {get}
-    var imageLink: String? {get}
-    var thumbLink: String? {get}
-    var videoLink: String? {get}
+    var imageURL: URL? {get}
+    var thumbURL: URL? {get}
+    var videoURL: URL? {get}
     var tags: [String] {get}
     var ingredients: [String] {get}
     var instructions: String {get}
@@ -30,11 +30,11 @@ class DetailViewDataItem: DetailViewDataViewModel {
     }
    
     public var name: String { drink.strDrink ?? "" }
-    public var imageLink: String? { drink.strImageSource }
-    public var thumbLink: String? { drink.strDrinkThumb }
-    public var videoLink: String? { drink.strVideo }
+    public var imageURL: URL? { URL(string: drink.strImageSource  ?? "") }
+    public var thumbURL: URL? { URL(string: drink.strDrinkThumb  ?? "") }
+    public var videoURL: URL? { URL(string: drink.strVideo  ?? "") }
     public var tags: [String] { drink.tags }
     public var ingredients: [String] { drink.ingredients }
     public var instructions: String { drink.strInstructions ?? "" }
-    public var hasVideo: Bool { videoLink != nil }
+    public var hasVideo: Bool { videoURL != nil }
 }

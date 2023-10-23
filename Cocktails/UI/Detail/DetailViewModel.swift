@@ -13,7 +13,8 @@ class DetailViewModel: ViewModel {
     
     public let strings = Strings.DetailView()
     @Published public var drink: DetailViewDataItem!
-
+    @Published public var drinkImageData: Data?
+    
     // MARK: Life cycle
     
     convenience init(drinkID: String, coordinator: ViewCoordinator) {
@@ -29,6 +30,14 @@ class DetailViewModel: ViewModel {
             return
         }
         self.drink = DetailViewDataItem(drink: drink)
+        loadImage(forDrink: self.drink)
+    }
+    
+    private func loadImage(forDrink drink: DetailViewDataItem) {
+        guard let imageURL = drink.thumbURL else { return }
+        Task {
+            drinkImageData = try? await WebImageLoader().loadOrFetchImage(forURL: imageURL)
+        }
     }
     
     // MARK: Navigation

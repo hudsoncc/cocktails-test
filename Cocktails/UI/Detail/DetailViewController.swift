@@ -46,6 +46,15 @@ class DetailViewController: UIViewController {
             }
         })
         .store(in: &cancellables)
+        
+        viewModel.$drinkImageData.sink(receiveValue: { imageData in
+            guard let imageData else { return }
+            
+            DispatchQueue.main.async { [weak self] in
+                self?.updateHeaderImage(forData: imageData)
+            }
+        })
+        .store(in: &cancellables)
     }
     
     private func update(drink: DetailViewDataItem) {
@@ -61,23 +70,24 @@ class DetailViewController: UIViewController {
         if drink.hasVideo {
             ui.videoButton.isEnabled = true
         }
-        
+    }
+    
+    private func updateHeaderImage(forData data: Data) {
+        ui.headerView.image = UIImage(data: data)
     }
     
     // MARK: Actions
 
     private func openImageInBrowser() {
-        openBrowser(withLink: viewModel.drink.thumbLink)
+        openBrowser(withURL: viewModel.drink.thumbURL)
     }
         
     @objc public func openVideoInBrowser() {
-        openBrowser(withLink: viewModel.drink.videoLink)
+        openBrowser(withURL: viewModel.drink.videoURL)
     }
     
-    private func openBrowser(withLink link: String?) {
-        guard let link, let url = URL(string: link), UIApplication.shared.canOpenURL(url) else {
-            return
-        }
+    private func openBrowser(withURL url: URL?) {
+        guard let url, UIApplication.shared.canOpenURL(url) else { return }
         UIApplication.shared.open(url)
     }
     
