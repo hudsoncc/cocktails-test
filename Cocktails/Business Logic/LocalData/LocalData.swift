@@ -31,7 +31,8 @@ class LocalData: NSObject {
     }
     
     public func fetchDrinks(context: NSManagedObjectContext? = nil) -> [Drink] {
-        coreData.fetchObjects(in: context)
+        let alphaSort = NSSortDescriptor(key: "strDrink", ascending: true)
+        return coreData.fetchObjects(sortDescriptors: [alphaSort], in: context)
     }
     
     public func fetchDrink(byID id: String, context: NSManagedObjectContext? = nil) -> Drink? {

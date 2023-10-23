@@ -73,14 +73,26 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        viewModel.numberOfSections(isSearching: isSearching)
+    }
+    
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        viewModel.sectionIndexTitles(isSearching: isSearching)
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        viewModel.titleForHeader(at: section, isSearching: isSearching)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.drinksCount(isSearching: isSearching)
+        viewModel.drinksCount(for: section, isSearching: isSearching)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchViewCell.cellID, for: indexPath) as! SearchViewCell
         
-        if let drink = viewModel.drink(at: indexPath.row, isSearching: isSearching) {
+        if let drink = viewModel.drink(at: indexPath, isSearching: isSearching) {
             cell.configure(for: drink)
         }
         
@@ -94,7 +106,7 @@ extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        guard let drink = viewModel.drink(at: indexPath.row, isSearching: isSearching) else {
+        guard let drink = viewModel.drink(at: indexPath, isSearching: isSearching) else {
             return
         }
         viewModel.showDetails(forDrink: drink)

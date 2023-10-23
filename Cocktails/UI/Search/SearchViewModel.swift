@@ -20,6 +20,8 @@ class SearchViewModel: ViewModel {
     public let strings = Strings.SearchView()
     @Published public var drinks = [SearchViewDataItem]()
     @Published public var searchResults = [SearchViewDataItem]()
+    public var sectionIndexTitles = [String]()
+    public var groupedDrinks = [String: [SearchViewDataItem]]()
 
     // MARK: Props (private)
     
@@ -33,17 +35,36 @@ class SearchViewModel: ViewModel {
     
     // MARK: Data
     
-    public func drink(at index: Int, isSearching: Bool) -> SearchViewDataItem? {
-        let items = isSearching ? searchResults : drinks
-        
-        guard index < items.count else {
-            return nil
+    public func drink(at indexPath: IndexPath, isSearching: Bool) -> SearchViewDataItem? {
+        if isSearching {
+            return indexPath.row < searchResults.count ? searchResults[indexPath.row] : nil
         }
-        return items[index]
+
+        let sectionTitle = sectionIndexTitles[indexPath.section]
+        guard let drinksForSection = groupedDrinks[sectionTitle] else { return nil }
+
+        return indexPath.row < drinksForSection.count ? drinksForSection[indexPath.row] : nil
     }
     
-    public func drinksCount(isSearching: Bool) -> Int {
-        isSearching ? searchResults.count : drinks.count
+    public func titleForHeader(at section: Int, isSearching: Bool) -> String? {
+        isSearching ? nil : sectionIndexTitles[section]
+    }
+    
+    public func sectionIndexTitles(isSearching: Bool) -> [String]? {
+        isSearching ? nil : sectionIndexTitles
+    }
+    
+    public func numberOfSections(isSearching: Bool) -> Int {
+        isSearching ? 1 : sectionIndexTitles.count
+    }
+    
+    public func drinksCount(for section: Int, isSearching: Bool) -> Int {
+        if isSearching {
+            return searchResults.count
+        }
+        let sectionTitle = sectionIndexTitles[section]
+        guard let drinksForSection = groupedDrinks[sectionTitle] else { return 0 }
+        return drinksForSection.count
     }
     
     public func hasDrinks(isSearching: Bool) -> Bool {
@@ -63,7 +84,11 @@ class SearchViewModel: ViewModel {
     
     public func fetchAllDrinks() {
         let data = LocalData.shared.fetchDrinks()
-        drinks = data.map { SearchViewDataItem(drink: $0) }
+        let drinks = data.map { SearchViewDataItem(drink: $0) }
+        groupedDrinks = Dictionary(grouping: drinks, by: { $0.name.prefix(1).uppercased() })
+        sectionIndexTitles = groupedDrinks.keys.sorted()
+        
+        self.drinks = drinks
     }
     
     public func fetchDrinksDebounced(for searchQuery: String) {

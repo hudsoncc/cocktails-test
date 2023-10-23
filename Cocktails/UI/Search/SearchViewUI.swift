@@ -16,7 +16,7 @@ class SearchViewUI: NSObject {
     // MARK: Props (public)
     
     private(set) var searchController = UISearchController(searchResultsController: nil)
-    private(set) var tableView = UITableView(frame: .zero, style: .plain)
+    private(set) var tableView = UITableView(frame: .zero, style: .insetGrouped)
     private(set) var emptyDataSetView = EmptyDatasetView()
 
     // MARK: Props (private)
