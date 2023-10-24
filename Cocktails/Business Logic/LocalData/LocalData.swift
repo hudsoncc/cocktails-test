@@ -18,8 +18,8 @@ class LocalData: NSObject {
     
     static let shared = LocalData()
     
-    public func load() async throws {
-        try await coreData.load()
+    public func load(inMemory: Bool = false) async throws {
+        try await coreData.load(inMemory: inMemory)
     }
 
     public func deleteAllData() {

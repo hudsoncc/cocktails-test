@@ -31,9 +31,14 @@ class CoreDataStack: NSObject {
       
     // MARK: Life cycle
         
-    public func load() async throws {
-        
-        container = NSPersistentContainer(name: "Cocktails")
+    public func load(inMemory: Bool = false) async throws {
+        let modelName = "Cocktails"
+        let model = managedObjectModel(named: modelName)
+        container = NSPersistentContainer(name: modelName, managedObjectModel: model!)
+
+        if inMemory, let storeDescription {
+            configureForInMemoryStore(description: storeDescription)
+        }
         
         return try await withCheckedThrowingContinuation { continuation in
 
@@ -52,6 +57,26 @@ class CoreDataStack: NSObject {
                 continuation.resume()
             }
         }
+    }
+    
+    /**
+     Manually creates a model object based on `modelName`, so we that unit tests
+     can locate and load the persistence store.
+     **/
+    private func managedObjectModel(named modelName: String) -> NSManagedObjectModel? {
+        let modelURL = Bundle(for: type(of: self)).url(forResource: modelName, withExtension: "momd")!
+        let managedObjectModel = NSManagedObjectModel(contentsOf: modelURL)
+        return managedObjectModel
+    }
+    
+    /**
+     Configures the persistent store description to use an in-memory store that's
+     gets recreated each time the store is loaded. Utilising `/dev/null` is also more
+     performant than using `NSInMemoryStoreType`.
+     **/
+    private func configureForInMemoryStore(description: NSPersistentStoreDescription) {
+        description.url = URL(fileURLWithPath: "/dev/null")
+        description.shouldAddStoreAsynchronously = false
     }
     
     public func newBackgroundContext() -> NSManagedObjectContext {
