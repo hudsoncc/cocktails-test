@@ -18,7 +18,7 @@ class SearchViewUI: NSObject {
     private(set) var searchController = UISearchController(searchResultsController: nil)
     private(set) var tableView = UITableView(frame: .zero, style: .insetGrouped)
     private(set) var emptyDataSetView = EmptyDatasetView()
-    private(set) var settingsButton = UIBarButtonItem(symbol: "ellipsis.circle", size: 18)
+    private(set) var settingsButton = UIBarButtonItem(symbol: "ellipsis.circle")
     
     // MARK: Props (private)
     

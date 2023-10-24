@@ -38,6 +38,8 @@ class SearchViewCell: UITableViewCell {
     }
     
     private func setup() {
+        accessoryType = .disclosureIndicator
+        
         addContainerView()
         addSymbolView()
         addLabelContainerView()

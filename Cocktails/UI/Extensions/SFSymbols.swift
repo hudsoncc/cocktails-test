@@ -19,7 +19,7 @@ extension UIImage {
 
 extension UIBarButtonItem {
 
-    convenience init(symbol: String, size: CGFloat, weight: UIImage.SymbolWeight = .regular, scale: UIImage.SymbolScale = .medium, target: Any?, action: Selector?) {
+    convenience init(symbol: String, size: CGFloat = 18, weight: UIImage.SymbolWeight = .regular, scale: UIImage.SymbolScale = .large, target: Any? = nil, action: Selector? = nil) {
         
         let image = UIImage(symbol: symbol, size: size, weight: weight, scale: scale)
         self.init(image: image, style: .plain, target: target, action: action)
