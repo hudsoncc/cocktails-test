@@ -170,8 +170,10 @@ class SearchViewModel: ViewModel {
         
         Task {
             do {
-                let drinks = try await api.fetchDrinks(forQuery: searchQuery)
-                saveDrinks(drinks)
+                if !searchQuery.isEmpty {
+                    let drinks = try await api.fetchDrinks(forQuery: searchQuery)
+                    saveDrinks(drinks)
+                }
                 fetchDrinksLocally(for: searchQuery)
             } catch {
                 // Error handling out of scope for project?
