@@ -16,6 +16,7 @@ struct Strings {
         let emptyDataSetDetail = "Use the search bar to find cocktail recipes. Recipes you've searched for will appear here."
         let emptySearchTitle = "No Results"
         let emptySearchDetail = "Try searching for a different cocktail."
+        let numericSectionIndexTitle = "#"
     }
     
     struct DetailView {

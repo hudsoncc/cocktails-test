@@ -78,7 +78,8 @@ class SearchViewModel: ViewModel {
     }
     
     public func sectionTitle(forDrink drink: SearchViewDataItem) -> String {
-        drink.name.prefix(1).uppercased()
+        let title = drink.name.prefix(1).uppercased()
+        return title.isNumber ? "#" : title
     }
     
     public func numberOfSections(isSearching: Bool) -> Int {
@@ -101,6 +102,19 @@ class SearchViewModel: ViewModel {
     public func searchResult(at index: Int) -> SearchViewDataItem {
         searchResults[index]
     }
+    
+    private func generateIndexTitles(forGroup group: [String: [SearchViewDataItem]]) -> [String] {
+        var indexTitles = groupedDrinks.keys.sorted()
+        let numberIndexTitle = strings.numericSectionIndexTitle
+        
+        // Ensure the # section index is rendered last in the table view index.
+        if indexTitles.contains(numberIndexTitle) {
+            indexTitles = indexTitles.filter { $0 != numberIndexTitle }
+            indexTitles.append(numberIndexTitle)
+        }
+        
+        return indexTitles
+    }
 
     // MARK: Fetch
     
@@ -115,8 +129,7 @@ class SearchViewModel: ViewModel {
         let data = LocalData.shared.fetchDrinks()
         let drinks = data.map { SearchViewDataItem(drink: $0) }
         groupedDrinks = Dictionary(grouping: drinks, by: { sectionTitle(forDrink: $0) })
-        sectionIndexTitles = groupedDrinks.keys.sorted()
-        
+        self.sectionIndexTitles = generateIndexTitles(forGroup: groupedDrinks)
         self.drinks = drinks
     }
     
