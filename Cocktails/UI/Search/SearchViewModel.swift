@@ -105,8 +105,10 @@ class SearchViewModel: ViewModel {
     // MARK: Fetch
     
     public func fetchDrinksLocally(for searchQuery: String) {
-        let data = LocalData.shared.fetchDrinks(forQuery: searchQuery)
-        searchResults = data.map { SearchViewDataItem(drink: $0) }
+        let drinks = LocalData.shared.fetchDrinks().map { SearchViewDataItem(drink: $0) }
+        let searchFilter = SmartSearchFilter(searchQuery: searchQuery)
+        let searchResults = drinks.filter { searchFilter.isMatch(for: $0.name) }
+        self.searchResults = searchResults
     }
     
     public func fetchAllDrinks() {
