@@ -34,6 +34,11 @@ class SearchViewController: UIViewController {
         title = viewModel.strings.title
         
         ui.searchController.searchBar.placeholder = viewModel.strings.searchPlaceholder
+        
+        ui.configureSettingsMenu(
+            title: viewModel.strings.settings,
+            actions: viewModel.settingsMenuActions
+        )
     }
     
     private func bindToModel() {
@@ -84,6 +89,15 @@ class SearchViewController: UIViewController {
             return
         }
         cellToUpdate.configure(forImageData: drink.thumbData)
+    }
+    
+    // MARK: Actions
+
+    public func settingsMenuActionWasPressed(_ actionTitle: String) {
+        let action = SearchViewModel.SettingsMenuAction.allCases.first(where: {
+            $0.title == actionTitle
+        })
+        viewModel.performSettings(action: action!)
     }
 }
 

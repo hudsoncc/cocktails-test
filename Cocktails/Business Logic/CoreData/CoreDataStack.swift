@@ -172,4 +172,5 @@ class CoreDataStack: NSObject {
        return results
     }
     
+    public func deleteAllObjects() {
 }

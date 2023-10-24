@@ -22,6 +22,10 @@ class LocalData: NSObject {
         try await coreData.load()
     }
 
+    public func deleteAllData() {
+        coreData.deleteAllObjects()
+    }
+    
     // MARK: Drinks
     
     public func fetchDrinks(forQuery searchQuery: String, context: NSManagedObjectContext? = nil) -> [Drink] {

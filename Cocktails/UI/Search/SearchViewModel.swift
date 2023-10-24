@@ -10,6 +10,27 @@ import Foundation
 class SearchViewModel: ViewModel {
    
     // Enums
+
+    enum SettingsMenuAction: String, CaseIterable {
+        case resetImageCache
+        case resetDrinkData
+        case resetAllData
+        
+        var title: String {
+            let strings = Strings.SearchView()
+            return switch self {
+            case .resetImageCache: strings.resetImageCache
+            case .resetDrinkData: strings.resetDrinkData
+            case .resetAllData: strings.resetAllData
+            }
+        }
+        
+        static var allTitles: [String] {
+            allCases.map { $0.title }
+        }
+    }
+    
+    // Structs
     
     struct Metric {
         static let userInputDebounceInterval: TimeInterval = 0.5
@@ -23,6 +44,7 @@ class SearchViewModel: ViewModel {
     @Published public var fetchedImageAvailableForDrink: SearchViewDataItem?
     public var sectionIndexTitles = [String]()
     public var groupedDrinks = [String: [SearchViewDataItem]]()
+    public var settingsMenuActions = SettingsMenuAction.allTitles
 
     // MARK: Props (private)
     
@@ -189,9 +211,39 @@ class SearchViewModel: ViewModel {
         }
     }
     
+    // MARK: Settings Actions
+
+    public func performSettings(action: SettingsMenuAction) {
+        switch action {
+        case .resetImageCache: resetImageCache()
+        case .resetDrinkData: resetDrinkData()
+        case .resetAllData: resetAllData()
+        }
+    }
+    
+    public func resetImageCache() {
+        imageLoader.clearCache()
+        fetchAllDrinks()
+    }
+    
+    public func resetDrinkData() {
+        LocalData.shared.deleteAllData()
+        groupedDrinks = [:]
+        searchResults = []
+        sectionIndexTitles = []
+        fetchedImageAvailableForDrink = nil
+        fetchAllDrinks()
+    }
+    
+    public func resetAllData() {
+        resetImageCache()
+        resetDrinkData()
+    }
+    
     // MARK: Navigation
     
     public func showDetails(forDrink drink: SearchViewDataItem) {
         coordinator.navigateToDetails(forDrinkID: drink.id)
     }
+    
 }

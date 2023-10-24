@@ -18,7 +18,8 @@ class SearchViewUI: NSObject {
     private(set) var searchController = UISearchController(searchResultsController: nil)
     private(set) var tableView = UITableView(frame: .zero, style: .insetGrouped)
     private(set) var emptyDataSetView = EmptyDatasetView()
-
+    private(set) var settingsButton = UIBarButtonItem(symbol: "ellipsis.circle", size: 18)
+    
     // MARK: Props (private)
     
     private var view: UIView { viewController.view }
@@ -40,12 +41,37 @@ class SearchViewUI: NSObject {
         view.backgroundColor = .systemBackground
         navigationBar.prefersLargeTitles = true
         
+        addSettingsButton()
         addSearchController()
         addTableView()
         addEmptyDatasetView()
     }
     
+    // MARK: Configuration
+
+    public func configureSettingsMenu(title: String, actions: [String]) {
+        var menuActions = [UIAction]()
+        
+        actions.forEach {
+            menuActions.append(newAction(title: $0))
+        }
+        
+        func newAction(title: String) -> UIAction {
+            let action = UIAction(title: title, image: nil, handler: { [unowned self] action in
+                viewController.settingsMenuActionWasPressed(action.title)
+            })
+            return action
+        }
+        
+        let menu = UIMenu(title: title, options: .displayInline, children: menuActions)
+        settingsButton.menu = menu
+    }
+    
     // MARK: Subviews
+    
+    private func addSettingsButton() {
+        viewController.navigationItem.rightBarButtonItem = settingsButton
+    }
     
     private func addTableView() {
         tableView.dataSource = viewController

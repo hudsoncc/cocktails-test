@@ -31,6 +31,21 @@ struct WebImageLoader {
         return try Data(contentsOf: url)
     }
     
+    public func clearCache() {
+        let cachePath = fileManager.temporaryDirectory.path
+        
+        do {
+            let fileName = try fileManager.contentsOfDirectory(atPath: cachePath)
+            
+            for file in fileName {
+                let filePath = URL(fileURLWithPath: cachePath).appendingPathComponent(file).absoluteURL
+                try fileManager.removeItem(at: filePath)
+            }
+        } catch  {
+            // Error handling out of scope for project?
+        }
+    }
+    
     // MARK: API (private)    
     
     private func cacheImage(forURL url: URL, atTemporaryURL tempURL: URL) throws {
