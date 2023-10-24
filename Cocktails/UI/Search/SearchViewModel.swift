@@ -128,7 +128,7 @@ class SearchViewModel: ViewModel {
     }
 
     @objc private func fetchDrinksForSearchQuery() {
-        guard let searchQuery = currentSearchQuery, !searchQuery.isEmpty else {
+        guard let searchQuery = currentSearchQuery else {
             searchResults = []
             return
         }

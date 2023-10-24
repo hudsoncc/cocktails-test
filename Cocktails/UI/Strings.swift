@@ -11,11 +11,11 @@ struct Strings {
     
     struct SearchView {
         let title = "Cocktails"
-        let searchPlaceholder = "Search by cocktail or ingredient"
-        let emptyDataSetTitle = "No Cocktails"
+        let searchPlaceholder = "Search"
+        let emptyDataSetTitle = "Get Started with Cocktails"
         let emptyDataSetDetail = "Use the search bar to find cocktail recipes. Recipes you've searched for will appear here."
-        let emptySearchTitle = "Search Cocktails"
-        let emptySearchDetail = "Search for cocktail recipes by name or ingredients."
+        let emptySearchTitle = "No Results"
+        let emptySearchDetail = "Try searching for a different cocktail."
     }
     
     struct DetailView {

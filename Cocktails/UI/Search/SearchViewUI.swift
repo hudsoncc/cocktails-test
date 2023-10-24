@@ -53,6 +53,7 @@ class SearchViewUI: NSObject {
         tableView.estimatedRowHeight = Metric.estimatedRowHeight
         tableView.rowHeight = UITableView.automaticDimension
         tableView.keyboardDismissMode = .onDrag
+        tableView.alwaysBounceVertical = true
         tableView.registerCells([SearchViewCell.self])
         view.addSubview(tableView)
         tableView.anchorFill()
