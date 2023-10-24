@@ -85,6 +85,7 @@
 		7AD9AF952AE2919D0010A141 /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF942AE2919D0010A141 /* LocalData.swift */; };
 		7AD9AF9C2AE2A06D0010A141 /* DictionaryRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF9B2AE2A06D0010A141 /* DictionaryRepresentable.swift */; };
 		7AD9AF9F2AE2A9480010A141 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF9E2AE2A9480010A141 /* CoreDataStack.swift */; };
+		7AFBE3022AE7B0090022AB52 /* ViewCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBE3012AE7B0090022AB52 /* ViewCoordinatorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +143,7 @@
 		7AD9AF942AE2919D0010A141 /* LocalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalData.swift; sourceTree = "<group>"; };
 		7AD9AF9B2AE2A06D0010A141 /* DictionaryRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryRepresentable.swift; sourceTree = "<group>"; };
 		7AD9AF9E2AE2A9480010A141 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		7AFBE3012AE7B0090022AB52 /* ViewCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCoordinatorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,12 +185,17 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		7ABDDAB92AE7C86800F13D8C /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		7AD9AF262AE192840010A141 = {
 			isa = PBXGroup;
 			children = (
 				7AD9AF312AE192840010A141 /* Cocktails */,
-				7AD9AF4B2AE192870010A141 /* CocktailsTests */,
-				7AD9AF552AE192870010A141 /* CocktailsUITests */,
 				7AD9AF302AE192840010A141 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -205,6 +212,7 @@
 		7AD9AF312AE192840010A141 /* Cocktails */ = {
 			isa = PBXGroup;
 			children = (
+				7ABDDAB92AE7C86800F13D8C /* Tests */,
 				7AD9AF322AE192840010A141 /* AppDelegate.swift */,
 				7AD9AF342AE192840010A141 /* SceneDelegate.swift */,
 				7AD9AF662AE1A1390010A141 /* UI */,
@@ -345,9 +353,18 @@
 		7AFBE2FF2AE7AFBF0022AB52 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				7AFBE3002AE7AFD40022AB52 /* Tests */,
 				7AD9AF6C2AE1A5070010A141 /* ViewCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		7AFBE3002AE7AFD40022AB52 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				7AFBE3012AE7B0090022AB52 /* ViewCoordinatorTests.swift */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -529,6 +546,7 @@
 				7ABDDAB02AE7C3E800F13D8C /* UITableViewCell+ID.swift in Sources */,
 				7ABDDAA42AE7C3E800F13D8C /* API.swift in Sources */,
 				7ABDDAAF2AE7C3E800F13D8C /* API+Model.swift in Sources */,
+				7AFBE3022AE7B0090022AB52 /* ViewCoordinatorTests.swift in Sources */,
 				7ABDDAB32AE7C3E800F13D8C /* NSObject+Debounce.swift in Sources */,
 				7ABDDAB12AE7C3E800F13D8C /* CoreDataStack.swift in Sources */,
 				7ABDDAB72AE7C41800F13D8C /* ViewCoordinator.swift in Sources */,

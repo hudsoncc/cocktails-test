@@ -12,7 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // MARK: Props (public)
 
     var window: UIWindow?
-    private var viewCoordinator: ViewCoordinator?
+    private var viewCoordinator: ViewCoordinator!
 
     // MARK: Life cycle
 
@@ -37,21 +37,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func addWindow(to scene: UIWindowScene) {
         window = UIWindow(frame: scene.coordinateSpace.bounds)
         window?.windowScene = scene
-        addViewCoordinator(for: window)
+        
+        viewCoordinator = ViewCoordinator(window: window!)
+        viewCoordinator.start()
         
         UIControl.appearance().tintColor = .label
         UIView.appearance().tintColor = .label
     }
     
-    private func addViewCoordinator(for window: UIWindow?) {
-        let navigationController = UINavigationController()
-        
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
-        
-        viewCoordinator = ViewCoordinator(navigationController: navigationController)
-        viewCoordinator?.start()
-    }
-
 }
 

@@ -12,14 +12,19 @@ class ViewCoordinator: NSObject {
     
     // MARK: Props (public)
 
-    private let navigationController: UINavigationController
+    private(set) var navigationController: UINavigationController!
+    private(set) var window: UIWindow!
 
     // MARK: Life cycle
     
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
-      }
-    
+    init(window: UIWindow, navigationController: UINavigationController? = nil) {
+        self.window = window
+        self.navigationController = navigationController ?? UINavigationController()
+        
+        self.window.rootViewController = self.navigationController
+        self.window.makeKeyAndVisible()
+    }
+
     // MARK: API (public)
 
     public func start() {
