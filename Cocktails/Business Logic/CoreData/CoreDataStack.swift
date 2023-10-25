@@ -212,5 +212,27 @@ class CoreDataStack: NSObject {
        return results
     }
     
+    // MARK: Delete
+    
     public func deleteAllObjects() {
+        let stores = container.persistentStoreCoordinator.persistentStores
+        let allEntities = container.managedObjectModel.entities.compactMap(\.name)
+        allEntities.forEach {
+            batchDeleteObjects(forEntity: $0, in: viewContext, forStores: stores)
+        }
+    }
+    
+    public func batchDeleteObjects(forEntity entity: String, in context: NSManagedObjectContext, forStores affectedStores: [NSPersistentStore]?) {
+        let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
+        let request = NSBatchDeleteRequest(fetchRequest: fetch)
+        request.affectedStores = affectedStores
+        
+        context.performAndWait {
+            do {
+                try context.execute(request)
+            } catch {
+                // Error handling out of scope for project?
+            }
+        }
+    }
 }

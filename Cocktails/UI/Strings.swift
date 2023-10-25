@@ -17,6 +17,11 @@ struct Strings {
         let emptySearchTitle = "No Results"
         let emptySearchDetail = "Try searching for a different cocktail."
         let numericSectionIndexTitle = "#"
+        
+        let settings = "Settings"
+        let resetImageCache = "Reset Image Cache"
+        let resetDrinkData = "Reset Drinks Data"
+        let resetAllData = "Reset All Data"
     }
     
     struct DetailView {
