@@ -45,10 +45,12 @@ Default | With Video | Dark Mode
 **Search View**
 - Tap the saerch bar and type a cocktail name to start searching.
 - Tap a cocktail in the search results list to see more detail.
+
 **Details View**
 - The details screen displays meta including a cocktail's name, tags, ingredients and instructions.
 - Tapping the cocktail's image on the details screen opens the image in the browser.
 - Some cocktails have a corresponding video. When a video is present, a play button will appear on the detail screen. Tapping the play button will open the video in the browser.
+
 **Debug Menu**
 - I decided to commit my basic debug menu that allowed me to quickly delete the CoreData cache, image cache, or all app data, while debuggin the app.
  
