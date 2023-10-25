@@ -1,11 +1,11 @@
 <p align="center">
-  <img width="100" height="100" src="https://github.com/hudsoncc/cocktails-test/assets/51756871/da65146c-9c4c-481d-808e-83317ba74c0c">
+  <img width="100" height="100" src="https://github.com/hudsoncc/cocktails-test/assets/51756871/6b530774-a45f-486f-9a78-bfdc465d29a2">
 </p>
 <h1 align="center">
 Meet Cocktails
 </h1>
 <p align="center">
-  <img src="https://github.com/hudsoncc/cocktails-test/assets/51756871/14a7a6a8-2f9c-463d-a03a-6db8d8f2da5d.gif">
+  <img src="https://github.com/hudsoncc/cocktails-test/assets/51756871/785bf45c-844c-40c3-a66c-a32cac7287ab.gif">
 </p>
 
 This is a sample project that allows user's to search for cocktail recipes. 
@@ -28,19 +28,20 @@ This is a sample project that allows user's to search for cocktail recipes.
 
 Empty Data Set | Cached Results | Debug Menu
 --|--|--
-<img width="349" alt="Screenshot 2023-10-25 at 17 11 11" src="https://github.com/hudsoncc/cocktails-test/assets/51756871/f6b9f7f9-78f1-43ed-8a9b-ef1cc41d5dbc">|<img width="349" alt="Screenshot 2023-10-25 at 17 11 28" src="https://github.com/hudsoncc/cocktails-test/assets/51756871/4a0bcbda-b8ca-4751-a60e-fe81533d0176">|<img width="349" alt="Screenshot 2023-10-25 at 17 12 29" src="https://github.com/hudsoncc/cocktails-test/assets/51756871/dcdc4db2-7c80-4ab3-b046-03655ec502ec">
+<img width="349" alt="Empty Data Set" src="https://github.com/hudsoncc/cocktails-test/assets/51756871/01ab12ed-65ff-474c-a384-e3f29b05f0a9">|<img width="349" alt="Cached Results" src="https://github.com/hudsoncc/cocktails-test/assets/51756871/6efe3a0b-b2b9-40f4-8260-645da10a3bd5">|<img width="349" alt="Screenshot 2023-10-25 at 20 34 44" src="https://github.com/hudsoncc/cocktails-test/assets/51756871/9d29d950-dfed-4bee-96f7-3f08b4a6ab33">
 
 **Search View - Search Mode**
 
 Empty Data Set | Results | No Results
 --|--|--
-<img width="349" alt="Screenshot 2023-10-25 at 17 11 28" src="https://github.com/hudsoncc/cocktails-test/assets/51756871/4a0bcbda-b8ca-4751-a60e-fe81533d0176">|<img width="349" alt="Screenshot 2023-10-25 at 17 14 22" src="https://github.com/hudsoncc/cocktails-test/assets/51756871/ae823b06-402b-4217-b658-2fb1ac7da7cc">|<img width="349" alt="Screenshot 2023-10-25 at 17 14 42" src="https://github.com/hudsoncc/cocktails-test/assets/51756871/6da8d5cd-3586-4f5a-ac83-dd10308dce1d">
+<img width="349" alt="Screenshot 2023-10-25 at 17 11 28" src="https://github.com/hudsoncc/cocktails-test/assets/51756871/eb13b4ea-5d9e-44ae-ba36-cef773280ab4">|<img width="349" alt="Screenshot 2023-10-25 at 17 14 22" src="https://github.com/hudsoncc/cocktails-test/assets/51756871/15d69524-c746-4a33-a8fb-2942e8017595">|<img width="349" alt="Screenshot 2023-10-25 at 17 14 42" src="https://github.com/hudsoncc/cocktails-test/assets/51756871/6fcf6695-b6fc-4dce-a1be-271a1b187517">
 
 **Detail View**
 
 Default | With Video | Dark Mode
 --|--|--
-<img width="349" alt="Screenshot 2023-10-25 at 17 12 35" src="https://github.com/hudsoncc/cocktails-test/assets/51756871/55a0f08c-fc25-4f4b-80f3-5e2f654ff01b">|<img width="349" alt="Screenshot 2023-10-25 at 19 14 01" src="https://github.com/hudsoncc/cocktails-test/assets/51756871/e5cfd5f8-224f-4f94-98b9-b2c2fea12edb">|<img width="349" alt="Screenshot 2023-10-25 at 17 15 37" src="https://github.com/hudsoncc/cocktails-test/assets/51756871/f5d84e3c-4122-41a5-8a1a-2cc597d949ae">
+<img width="349" alt="Screenshot 2023-10-25 at 19 14 01" src="https://github.com/hudsoncc/cocktails-test/assets/51756871/1f45a9ab-2ff3-4518-a2bf-111852534c95">|<img width="349" alt="Screenshot 2023-10-25 at 19 14 01" src="https://github.com/hudsoncc/cocktails-test/assets/51756871/912c200b-c1f4-42ca-a5af-58d40146b386">|<img width="349" alt="Screenshot 2023-10-25 at 17 15 37" src="https://github.com/hudsoncc/cocktails-test/assets/51756871/f328de48-1441-4b0b-a827-6cc9a12f1c92">
+
 ### Functionality
 **Search View**
 - Tap the saerch bar and type a cocktail name to start searching.
