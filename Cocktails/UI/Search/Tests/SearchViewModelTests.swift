@@ -313,9 +313,12 @@ final class SearchViewModelTests: XCTestCase {
         XCTAssertEqual(drink.thumbURL, imageURL)
         XCTAssertNil(drink.thumbData)
 
-        await viewModel.loadOrFetchImageIfNeeded(forDrink: drink)
-        XCTAssertEqual(viewModel.fetchedImageAvailableForDrink!.thumbURL, imageURL)
-        XCTAssertNotNil(mockImageLoader.loadImage(forURL: imageURL))
+        viewModel.loadOrFetchImageIfNeeded(forDrink: drink)
+
+        await waitAsync(description: "wait for drink image to be loaded/fetched async", timeOut: 1) {
+            XCTAssertEqual(viewModel.fetchedImageAvailableForDrink!.thumbURL, imageURL)
+            XCTAssertNotNil(self.mockImageLoader.loadImage(forURL: imageURL))
+        }
     }
     
     // MARK: Helpers

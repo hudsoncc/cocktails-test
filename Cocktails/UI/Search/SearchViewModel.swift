@@ -74,11 +74,7 @@ class SearchViewModel: ViewModel {
             drink = indexPath.row < drinksForSection.count ? drinksForSection[indexPath.row] : nil
         }
         
-        if let drink {
-            Task {
-                await loadOrFetchImageIfNeeded(forDrink: drink)
-            }
-        }
+        loadOrFetchImageIfNeeded(forDrink: drink)
         
         return drink
     }
@@ -192,26 +188,28 @@ class SearchViewModel: ViewModel {
     
     // MARK: Image Loading
     
-    public func loadOrFetchImageIfNeeded(forDrink drink: SearchViewDataItem) async {
-        guard let thumbURL = drink.thumbURL, drink.thumbData == nil else {
+    public func loadOrFetchImageIfNeeded(forDrink drink: SearchViewDataItem?) {
+        guard let drink, let thumbURL = drink.thumbURL, drink.thumbData == nil else {
             return
         }
         
         guard let imageData = imageLoader.loadImage(forURL: thumbURL) else {
-            await fetchImage(forDrink: drink)
+            fetchImage(forDrink: drink)
             return
         }
         
         drink.thumbData = imageData
     }
     
-    private func fetchImage(forDrink drink: SearchViewDataItem) async {
-        let url = drink.thumbURL!
-        guard let imageData = try? await imageLoader.fetchImage(forURL: url) else {
-            return
+    private func fetchImage(forDrink drink: SearchViewDataItem) {
+        Task {
+            let url = drink.thumbURL!
+            guard let imageData = try? await imageLoader.fetchImage(forURL: url) else {
+                return
+            }
+            drink.thumbData = imageData
+            fetchedImageAvailableForDrink = drink
         }
-        drink.thumbData = imageData
-        fetchedImageAvailableForDrink = drink
     }
     
     // MARK: Settings Actions
