@@ -18,8 +18,6 @@ class NetworkQueue: NSObject {
         return queue
     }()
     
-    public var hasOperations: Bool { !queue.operations.isEmpty }
-
     // MARK: Life cycle
     
     static let shared = NetworkQueue()
