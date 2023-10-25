@@ -125,8 +125,8 @@ extension UIView {
         anchorCenter(.horizontal, x: offset)
     }
     
-    public func anchorCenterY(offset: CGFloat = .zero, of parentView: UIView? = nil) {
-        anchorCenter(.vertical, y: offset)
+    public func anchorCenterY(offset: CGFloat = .zero, of parentView: UIView? = nil) -> NSLayoutConstraint {
+        anchorCenter(.vertical, y: offset).first!
     }
     
     public func anchorSafeAreaCenterY(offset: CGFloat = .zero, of parentView: UIView? = nil) {

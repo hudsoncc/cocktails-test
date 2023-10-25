@@ -13,12 +13,12 @@ class SearchViewController: UIViewController {
     // MARK: Props (public)
 
     public var viewModel: SearchViewModel!
+    public var isSearching: Bool = false
 
     // MARK: Props (private)
 
     private var ui: SearchViewUI!
     private var cancellables: Set<AnyCancellable> = []
-    private var isSearching: Bool { ui.searchController.isActive }
     
     // MARK: Life cycle
 
@@ -65,20 +65,32 @@ class SearchViewController: UIViewController {
     }
 
     private func update() {
-        ui.tableView.reloadData()
-        ui.emptyDataSetView.isHidden = viewModel.hasDrinks(isSearching: isSearching)
+        UIView.transition(with: ui.tableView, duration: 0.25, options: .transitionCrossDissolve) {
+            self.ui.tableView.reloadData()
+        }
         
+        ui.showEmptyDataSetView(show: viewModel.hasDrinks(isSearching: self.isSearching))
+
         updateStrings()
     }
     
     private func updateStrings() {
         if isSearching {
-            ui.emptyDataSetView.title = viewModel.strings.emptySearchTitle
-            ui.emptyDataSetView.detail = viewModel.strings.emptySearchDetail
-        } else {
+            let content = viewModel.contentForCurrentSearchState()
+            ui.emptyDataSetView.title = content.0
+            ui.emptyDataSetView.detail = content.1
+        }
+        else {
             ui.emptyDataSetView.title = viewModel.strings.emptyDataSetTitle
             ui.emptyDataSetView.detail = viewModel.strings.emptyDataSetDetail
         }
+    }
+    
+    private func updateEmptyDataSetForSearchTransition() {
+        ui.transitionEmptyDataSetView(isSearching: isSearching) { [weak self] in
+            self?.ui.tableView.reloadSectionIndexTitles()
+        }
+        updateStrings()
     }
    
     private func updateCellImage(forDrink drink: SearchViewDataItem?) {
@@ -108,7 +120,8 @@ extension SearchViewController: UITableViewDataSource {
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        viewModel.sectionIndexTitles(isSearching: isSearching)
+        let titles = viewModel.sectionIndexTitles(isSearching: isSearching)
+        return ui.isTransitioning ? [] : titles
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -145,10 +158,18 @@ extension SearchViewController: UITableViewDelegate {
 extension SearchViewController: UISearchControllerDelegate {
     
     func willPresentSearchController(_ searchController: UISearchController) {
-        update()
+        isSearching = true
+        ui.fadeTableViewOutIn()
+        updateEmptyDataSetForSearchTransition()
     }
     
     func willDismissSearchController(_ searchController: UISearchController) {
+        isSearching = false
+        ui.fadeTableViewOutIn()
+        updateEmptyDataSetForSearchTransition()
+    }
+    
+    func didDismissSearchController(_ searchController: UISearchController) {
         update()
     }
     

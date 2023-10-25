@@ -95,7 +95,13 @@ class SearchViewModel: ViewModel {
     }
     
     public func titleForHeader(at section: Int, isSearching: Bool) -> String? {
-        isSearching ? nil : sectionIndexTitles[section]
+        guard !isSearching else {
+            if let query = currentSearchQuery, !query.isEmpty {
+                return "\(searchResults.count) \(strings.resultsFor) \"\(query)\""
+            }
+            return strings.emptySpace
+        }
+        return sectionIndexTitles[section]
     }
     
     public func sectionIndexTitles(isSearching: Bool) -> [String]? {
@@ -212,6 +218,17 @@ class SearchViewModel: ViewModel {
         }
     }
     
+    // MARK: Search state
+    
+    public func contentForCurrentSearchState() -> (String, String) {
+        if let searchQuery = currentSearchQuery {
+            if searchResults.isEmpty && !searchQuery.isEmpty {
+                return ("\(strings.emptySearchTitle) \"\(searchQuery)\"", strings.emptySearchDetail)
+            }
+        }
+        return (strings.emptyStartSearchTitle, strings.emptyStartSearchDetail)
+    }
+
     // MARK: Settings Actions
 
     public func performSettings(action: SettingsMenuAction) {

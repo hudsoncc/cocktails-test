@@ -59,8 +59,6 @@ class EmptyDatasetView: UIView {
     }
     
     private func setup() {
-        backgroundColor = .systemBackground
-
         addContentView()
         addFlexibleSpace()
         addImageView()
@@ -72,7 +70,6 @@ class EmptyDatasetView: UIView {
     private func addContentView() {
         contentView.axis = .vertical
         contentView.spacing = .paddingS
-        contentView.backgroundColor = .systemBackground
         contentView.isLayoutMarginsRelativeArrangement = true
         contentView.layoutMargins = .init(top: .zero, left: .paddingM, bottom: .zero, right: .paddingM)
         addSubview(contentView)
