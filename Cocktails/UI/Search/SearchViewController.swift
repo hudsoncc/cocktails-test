@@ -161,7 +161,7 @@ extension SearchViewController: UISearchResultsUpdating {
             return
         }
         
-        viewModel.fetchDrinksDebounced(for: searchQuery)
+        viewModel.fetchDrinksDebounced(forSearchQuery: searchQuery)
     }
     
 }

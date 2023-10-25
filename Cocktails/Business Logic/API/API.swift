@@ -7,7 +7,13 @@
 
 import Foundation
 
-class API {
+protocol APIService {
+    func fetchDrinks(forQuery searchQuery: String) async throws -> API.Model.Drinks
+    func enqueueRequest<T:Decodable>(_ request: URLRequest) async throws -> T
+    func newRequest(_ method: API.HTTPMethod, toEndpoint endpoint: API.Endpoint, params: [URLQueryItem]) -> URLRequest
+}
+
+class API: APIService {
 
     // MARK: Enums
 
@@ -27,7 +33,7 @@ class API {
     
     // MARK: Helpers
     
-    private func enqueueRequest<T:Decodable>(_ request: URLRequest) async throws -> T {
+    internal func enqueueRequest<T:Decodable>(_ request: URLRequest) async throws -> T {
         return try await withCheckedThrowingContinuation { continuation in
 
             let op = NetworkOperation(request: request) { (result: Result<T, Error>) in
@@ -44,7 +50,7 @@ class API {
         
     }
     
-    private func newRequest(_ method: HTTPMethod, toEndpoint endpoint: Endpoint, params: [URLQueryItem]) -> URLRequest {
+    internal func newRequest(_ method: HTTPMethod, toEndpoint endpoint: Endpoint, params: [URLQueryItem]) -> URLRequest {
         var urlComps = URLComponents(url: endpoint.urlValue, resolvingAgainstBaseURL: false)!
         urlComps.queryItems = params
                 

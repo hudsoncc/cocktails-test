@@ -62,6 +62,8 @@
 		7ABDDAC12AE834AD00F13D8C /* String+Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABDDAC02AE834AD00F13D8C /* String+Numbers.swift */; };
 		7ABDDAC22AE85BA000F13D8C /* String+Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABDDAC02AE834AD00F13D8C /* String+Numbers.swift */; };
 		7ABDDAC32AE85BB100F13D8C /* SmartSearchFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABDDABE2AE8133B00F13D8C /* SmartSearchFilter.swift */; };
+		7ABDDAC62AE8682600F13D8C /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABDDAC52AE8682600F13D8C /* SearchViewModelTests.swift */; };
+		7ABDDAD02AE9269200F13D8C /* XCTestCase+Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABDDACF2AE9269200F13D8C /* XCTestCase+Async.swift */; };
 		7AD9AF332AE192840010A141 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF322AE192840010A141 /* AppDelegate.swift */; };
 		7AD9AF352AE192840010A141 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF342AE192840010A141 /* SceneDelegate.swift */; };
 		7AD9AF372AE192840010A141 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD9AF362AE192840010A141 /* SearchViewController.swift */; };
@@ -117,6 +119,8 @@
 		7A2CBF842AE5C4BB009995CF /* WebImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageLoader.swift; sourceTree = "<group>"; };
 		7ABDDABE2AE8133B00F13D8C /* SmartSearchFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartSearchFilter.swift; sourceTree = "<group>"; };
 		7ABDDAC02AE834AD00F13D8C /* String+Numbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Numbers.swift"; sourceTree = "<group>"; };
+		7ABDDAC52AE8682600F13D8C /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
+		7ABDDACF2AE9269200F13D8C /* XCTestCase+Async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Async.swift"; sourceTree = "<group>"; };
 		7AD9AF2F2AE192840010A141 /* Cocktails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cocktails.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AD9AF322AE192840010A141 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AD9AF342AE192840010A141 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +192,15 @@
 		7ABDDAB92AE7C86800F13D8C /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				7ABDDACF2AE9269200F13D8C /* XCTestCase+Async.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		7ABDDAC42AE867C300F13D8C /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				7ABDDAC52AE8682600F13D8C /* SearchViewModelTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -242,6 +255,7 @@
 		7AD9AF672AE1A1740010A141 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				7ABDDAC42AE867C300F13D8C /* Tests */,
 				7AD9AF362AE192840010A141 /* SearchViewController.swift */,
 				7AD9AF682AE1A1D50010A141 /* SearchViewUI.swift */,
 				7AD9AF6A2AE1A1E60010A141 /* SearchViewModel.swift */,
@@ -526,6 +540,7 @@
 				7ABDDAA82AE7C3E800F13D8C /* VibrancyButton.swift in Sources */,
 				7ABDDA712AE7C39600F13D8C /* SearchViewUI.swift in Sources */,
 				7ABDDA762AE7C39F00F13D8C /* DetailViewDataItem.swift in Sources */,
+				7ABDDAC62AE8682600F13D8C /* SearchViewModelTests.swift in Sources */,
 				7ABDDA7B2AE7C39F00F13D8C /* DetailViewUI.swift in Sources */,
 				7ABDDAB42AE7C3F100F13D8C /* Styles.swift in Sources */,
 				7ABDDA742AE7C39600F13D8C /* SearchViewDataItem.swift in Sources */,
@@ -538,6 +553,7 @@
 				7ABDDAA12AE7C3E800F13D8C /* DictionaryRepresentable.swift in Sources */,
 				7ABDDAA22AE7C3E800F13D8C /* TagView.swift in Sources */,
 				7ABDDAAE2AE7C3E800F13D8C /* UINavigationBar+Transparency.swift in Sources */,
+				7ABDDAD02AE9269200F13D8C /* XCTestCase+Async.swift in Sources */,
 				7ABDDAB22AE7C3E800F13D8C /* NetworkQueue.swift in Sources */,
 				7ABDDAAA2AE7C3E800F13D8C /* EmptyDatasetView.swift in Sources */,
 				7ABDDA7A2AE7C39F00F13D8C /* DetailViewModel.swift in Sources */,

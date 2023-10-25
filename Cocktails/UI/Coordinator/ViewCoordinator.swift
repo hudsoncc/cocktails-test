@@ -28,7 +28,7 @@ class ViewCoordinator: NSObject {
     // MARK: API (public)
 
     public func start() {
-        let viewModel = SearchViewModel(coordinator: self)
+        let viewModel = SearchViewModel(coordinator: self, api: API())
         let viewController = SearchViewController()
         viewController.viewModel = viewModel
         navigationController.setViewControllers([viewController], animated: false)

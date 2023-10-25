@@ -59,6 +59,19 @@ class CoreDataStack: NSObject {
         }
     }
     
+    public func destroyStore()  {
+        let stores = container.persistentStoreCoordinator.persistentStores
+        guard let storeURL = stores.first?.url else { return }
+        
+        do {
+            try self.container.persistentStoreCoordinator.destroyPersistentStore(at: storeURL, ofType: NSSQLiteStoreType, options: nil)
+        } catch {
+            // Error handling out of scope for project?
+        }
+        isLoaded = false
+        container = nil
+    }
+    
     /**
      Manually creates a model object based on `modelName`, so we that unit tests
      can locate and load the persistence store.

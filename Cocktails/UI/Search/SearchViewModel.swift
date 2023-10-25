@@ -49,11 +49,13 @@ class SearchViewModel: ViewModel {
     // MARK: Props (private)
     
     private var currentSearchQuery: String?
-    private var api = API()
-    private var imageLoader = WebImageLoader()
+    private var api: APIService!
+    private var imageLoader: ImageLoadable!
 
-    override init(coordinator: ViewCoordinator) {
+    init(coordinator: ViewCoordinator, api: APIService, imageLoader: ImageLoadable? = nil) {
         super.init(coordinator: coordinator)
+        self.api = api
+        self.imageLoader = imageLoader ?? WebImageLoader()
         fetchAllDrinks()
     }
     
@@ -66,12 +68,17 @@ class SearchViewModel: ViewModel {
             drink = indexPath.row < searchResults.count ? searchResults[indexPath.row] : nil
         }
         else {
+            guard indexPath.section < sectionIndexTitles.count else { return nil }
             let sectionTitle = sectionIndexTitles[indexPath.section]
             guard let drinksForSection = groupedDrinks[sectionTitle] else { return nil }
             drink = indexPath.row < drinksForSection.count ? drinksForSection[indexPath.row] : nil
         }
         
-        loadOrFetchImageIfNeeded(forDrink: drink)
+        if let drink {
+            Task {
+                await loadOrFetchImageIfNeeded(forDrink: drink)
+            }
+        }
         
         return drink
     }
@@ -84,7 +91,7 @@ class SearchViewModel: ViewModel {
         }
   
         let sectionKey = sectionTitle(forDrink: drink)
-        if let drinkSection = Array(groupedDrinks.keys).firstIndex(of: sectionKey),
+        if let drinkSection = Array(groupedDrinks.keys.sorted()).firstIndex(of: sectionKey),
            let drinkIndex = groupedDrinks[sectionKey]?.firstIndex(where: { $0.id == drink.id } ) {
             return IndexPath(row: drinkIndex, section: drinkSection)
         }
@@ -101,7 +108,7 @@ class SearchViewModel: ViewModel {
     
     public func sectionTitle(forDrink drink: SearchViewDataItem) -> String {
         let title = drink.name.prefix(1).uppercased()
-        return title.isNumber ? "#" : title
+        return title.isNumber ? strings.numericSectionIndexTitle : title
     }
     
     public func numberOfSections(isSearching: Bool) -> Int {
@@ -121,10 +128,6 @@ class SearchViewModel: ViewModel {
         isSearching ? !searchResults.isEmpty : !drinks.isEmpty
     }
     
-    public func searchResult(at index: Int) -> SearchViewDataItem {
-        searchResults[index]
-    }
-    
     private func generateIndexTitles(forGroup group: [String: [SearchViewDataItem]]) -> [String] {
         var indexTitles = groupedDrinks.keys.sorted()
         let numberIndexTitle = strings.numericSectionIndexTitle
@@ -140,7 +143,7 @@ class SearchViewModel: ViewModel {
 
     // MARK: Fetch
     
-    public func fetchDrinksLocally(for searchQuery: String) {
+    public func fetchDrinksLocally(forSearchQuery searchQuery: String) {
         let drinks = LocalData.shared.fetchDrinks().map { SearchViewDataItem(drink: $0) }
         let searchFilter = SmartSearchFilter(searchQuery: searchQuery)
         let searchResults = drinks.filter { searchFilter.isMatch(for: $0.name) }
@@ -155,7 +158,7 @@ class SearchViewModel: ViewModel {
         self.drinks = drinks
     }
     
-    public func fetchDrinksDebounced(for searchQuery: String) {
+    public func fetchDrinksDebounced(forSearchQuery searchQuery: String) {
         currentSearchQuery = searchQuery
         
         let selector = #selector(fetchDrinksForSearchQuery)
@@ -174,14 +177,14 @@ class SearchViewModel: ViewModel {
                     let drinks = try await api.fetchDrinks(forQuery: searchQuery)
                     saveDrinks(drinks)
                 }
-                fetchDrinksLocally(for: searchQuery)
+                fetchDrinksLocally(forSearchQuery: searchQuery)
             } catch {
                 // Error handling out of scope for project?
             }
         }
     }
     
-    private func saveDrinks(_ drinks: API.Model.Drinks) {
+    public func saveDrinks(_ drinks: API.Model.Drinks) {
         let drinkDictionaries = drinks.drinks?.map { $0.dictionaryRepresentation() }
         LocalData.shared.saveDrinks(from: drinkDictionaries)
         fetchAllDrinks()
@@ -189,28 +192,26 @@ class SearchViewModel: ViewModel {
     
     // MARK: Image Loading
     
-    private func loadOrFetchImageIfNeeded(forDrink drink: SearchViewDataItem?) {
-        guard let drink, let thumbURL = drink.thumbURL, drink.thumbData == nil else {
+    public func loadOrFetchImageIfNeeded(forDrink drink: SearchViewDataItem) async {
+        guard let thumbURL = drink.thumbURL, drink.thumbData == nil else {
             return
         }
         
         guard let imageData = imageLoader.loadImage(forURL: thumbURL) else {
-            fetchImage(forDrink: drink)
+            await fetchImage(forDrink: drink)
             return
         }
         
         drink.thumbData = imageData
     }
     
-    private func fetchImage(forDrink drink: SearchViewDataItem) {
-        Task {
-            let url = drink.thumbURL!
-            guard let imageData = try? await imageLoader.fetchImage(forURL: url) else {
-                return
-            }
-            drink.thumbData = imageData
-            fetchedImageAvailableForDrink = drink
+    private func fetchImage(forDrink drink: SearchViewDataItem) async {
+        let url = drink.thumbURL!
+        guard let imageData = try? await imageLoader.fetchImage(forURL: url) else {
+            return
         }
+        drink.thumbData = imageData
+        fetchedImageAvailableForDrink = drink
     }
     
     // MARK: Settings Actions
@@ -225,6 +226,7 @@ class SearchViewModel: ViewModel {
     
     public func resetImageCache() {
         imageLoader.clearCache()
+        fetchedImageAvailableForDrink = nil
         fetchAllDrinks()
     }
     
