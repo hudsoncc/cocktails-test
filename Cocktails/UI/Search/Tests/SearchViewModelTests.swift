@@ -161,13 +161,19 @@ final class SearchViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.drinks.count, 1)
     }
 
-    func test_titleForHeaderAt_whenSearching_returnsNil() async throws {
+    func test_titleForHeaderAt_whenSearchingWithNoQuery_returnsEmptySpace() async throws {
         let viewModel = try await newViewModel(cachedDrinks: [
             .init(idDrink: "", strDrink: "a"),
         ])
-        
+        viewModel.fetchDrinksLocally(forSearchQuery: "")
+        XCTAssertEqual(viewModel.titleForHeader(at: 0, isSearching: true), " ")
+    }
+    func test_titleForHeaderAt_whenSearchingWithQuery_returnsResultsSummary() async throws {
+        let viewModel = try await newViewModel(cachedDrinks: [
+            .init(idDrink: "", strDrink: "a"),
+        ])
         viewModel.fetchDrinksLocally(forSearchQuery: "a")
-        XCTAssertNil(viewModel.titleForHeader(at: 0, isSearching: true))
+        XCTAssertEqual(viewModel.titleForHeader(at: 0, isSearching: true), "1 results for \"a\"")
     }
     
     func test_titleForHeaderAt_whenNotSearching_returnsTitleForSection() async throws {
