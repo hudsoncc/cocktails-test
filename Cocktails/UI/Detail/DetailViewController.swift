@@ -39,10 +39,8 @@ class DetailViewController: UIViewController {
     
     private func bindToModel() {
         viewModel.$drink.sink(receiveValue: { drink in
-            guard let drink else { return }
-            
             DispatchQueue.main.async { [weak self] in
-                self?.update(drink: drink)
+                self?.update(forDrink: drink)
             }
         })
         .store(in: &cancellables)
@@ -57,8 +55,13 @@ class DetailViewController: UIViewController {
         .store(in: &cancellables)
     }
     
-    private func update(drink: DetailViewDataItem) {
-        ui.tableView.reloadData()     
+    private func update(forDrink drink: DetailViewDataItem?) {
+        guard let drink else {
+            viewModel.navigateBack()
+            return
+        }
+
+        ui.tableView.reloadData()
         
         ui.headerView.supertitle = viewModel.strings.cocktails
         ui.headerView.title = drink.name
@@ -79,11 +82,11 @@ class DetailViewController: UIViewController {
     // MARK: Actions
 
     private func openImageInBrowser() {
-        openBrowser(withURL: viewModel.drink.thumbURL)
+        openBrowser(withURL: viewModel.drink?.thumbURL)
     }
         
     @objc public func openVideoInBrowser() {
-        openBrowser(withURL: viewModel.drink.videoURL)
+        openBrowser(withURL: viewModel.drink?.videoURL)
     }
     
     private func openBrowser(withURL url: URL?) {

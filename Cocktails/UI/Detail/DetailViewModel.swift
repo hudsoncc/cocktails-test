@@ -12,31 +12,33 @@ class DetailViewModel: ViewModel {
     // MARK: Props (public)
     
     public let strings = Strings.DetailView()
-    @Published public var drink: DetailViewDataItem!
+    @Published public var drink: DetailViewDataItem?
     @Published public var drinkImageData: Data?
-    
+    private var imageLoader: ImageLoadable!
+
     // MARK: Life cycle
     
-    convenience init(drinkID: String, coordinator: ViewCoordinator) {
+    convenience init(drinkID: String, coordinator: ViewCoordinator, imageLoader: ImageLoadable? = nil) {
         self.init(coordinator: coordinator)
         self.fetchDrink(withID: drinkID)
+        self.imageLoader = imageLoader ?? WebImageLoader()
     }
 
     // MARK: Fetch
 
     private func fetchDrink(withID drinkID: String) {
         guard let drink = LocalData.shared.fetchDrink(byID: drinkID) else {
-            navigateBack()
+            drink = nil
             return
         }
         self.drink = DetailViewDataItem(drink: drink)
-        loadImage(forDrink: self.drink)
+        loadImage(forDrink: self.drink!)
     }
     
     private func loadImage(forDrink drink: DetailViewDataItem) {
         guard let imageURL = drink.thumbURL else { return }
         Task {
-            drinkImageData = try? await WebImageLoader().loadOrFetchImage(forURL: imageURL)
+            drinkImageData = try? await imageLoader.loadOrFetchImage(forURL: imageURL)
         }
     }
     

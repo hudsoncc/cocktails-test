@@ -60,6 +60,8 @@ class CoreDataStack: NSObject {
     }
     
     public func destroyStore()  {
+        guard container != nil else { return }
+        
         let stores = container.persistentStoreCoordinator.persistentStores
         guard let storeURL = stores.first?.url else { return }
         
