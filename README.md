@@ -21,7 +21,7 @@ This is a sample project that allows user's to search for cocktail recipes.
 - The JSON response returned by the API is converted to struct objects that conform to `Decodable` for easy parsing, then mapped to `NSManagedObject`s, for local storage in the persistent store. 
 - I made a conscious decision not to include any third-party dependencies. I felt it was unecessary given the project's scope and deadline, and would be a good opportunity to enjoy the journey, as well as have 100% ownership over the code and decision making.
 - The app works 100% offline, with all search query results and web images cached locally for offline use.
-- You can explore development of the app chronologically in my [PR](https://github.com/hudsoncc/cocktails-test/pull/1) where I've mades changes [commit by commit](https://github.com/hudsoncc/cocktails-test/pull/1).
+- You can explore development of the app chronologically in my [PR](https://github.com/hudsoncc/cocktails-test/pull/1) where I've made changes [commit by commit](https://github.com/hudsoncc/cocktails-test/pull/1).
 
 ### State
 
