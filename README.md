@@ -45,20 +45,20 @@ Default | With Video | Dark Mode
 
 ### Functionality
 **Search View**
-- Tap the saerch bar and type a cocktail name to start searching.
+- Tap the search bar and type a cocktail name to start searching.
 - Tap a cocktail in the search results list to see more detail.
 
 **Details View**
 - The details screen displays meta including a cocktail's name, tags, ingredients and instructions.
-- Tapping the cocktail's image on the details screen opens the image in the browser.
+- Tapping the cocktail's image pens the image in the browser.
 - Some cocktails have a corresponding video. When a video is present, a play button will appear on the detail screen. Tapping the play button will open the video in the browser.
 
 **Debug Menu**
-- I decided to commit my basic debug menu that allowed me to quickly delete the CoreData cache, image cache, or all app data, while debuggin the app.
+- I decided to commit my basic debug menu that allowed me to quickly delete the CoreData cache or image cache respectively, or delete all app data without having to delete and re-install the app.
  
 ### Extras
-- Cocktail images are lazily fetched asynchronously, and cached to disk in a subdirectory `imageCache` of the app's `documentDirectory` dir. Due the project scope, it felt overkill to to include an in-memory cache to assist the on disk cache.
-- I've written test coverage for the app's coordiniator navigation logic, as well as for the app's two view models.
+- Cocktail images are lazily fetched asynchronously, and cached to disk in a subdirectory `imageCache` of the app's `documentDirectory`. Due to the project scope, it felt overkill to to include an in-memory cache to reduce file system I/O operations.
+- I've written test coverage for the app's [coordiniator](https://github.com/hudsoncc/cocktails-test/blob/main/Cocktails/UI/Coordinator/Tests/ViewCoordinatorTests.swift) navigation logic, as well as for the app's two view models, [`SearchViewModel`](https://github.com/hudsoncc/cocktails-test/blob/main/Cocktails/UI/Search/Tests/SearchViewModelTests.swift#L27) and [`DetailViewModel`](https://github.com/hudsoncc/cocktails-test/blob/main/Cocktails/UI/Detail/Tests/DetailViewModelTests.swift).
 - I utilised `UIView.animate` to add some minor polish to the app's state transitions, without going too overboard.
 
 ### Discoveries
