@@ -19,7 +19,7 @@ This is a sample project that allows user's to search for cocktail recipes.
 - The app consumes the [search](https://www.thecocktaildb.com/api/json/v1/1/search.php?s=lemon) endpoint of cocktail DB's public API, to render cocktail meta within the app.
 - To be a good citizen of the API, requests made to the `search` endpoint triggered via keyboard input, are debounced with a ~0.5 interval while the user types. This also protects against making unnecessary roundtrips and local fetches requests to CoreData. 
 - The JSON response returned by the API is converted to struct objects that conform to `Decodable` for easy parsing, then mapped to `NSManagedObject`s, for local storage in the persistent store. 
-- I made an consciouse decision not to include any third-party dependencies. I felt it was unecessary given the project's scope and deadlines, and would a good opportunity to enjoy the journey, as well as have 100% ownership over the code and decision making.
+- I made a conscious decision not to include any third-party dependencies. I felt it was unecessary given the project's scope and deadlines, and would be a good opportunity to enjoy the journey, as well as have 100% ownership over the code and decision making.
 - The app works 100% offline. As mentioned above, all search query results and web images are cached locally for offline use.
 - You can explore development of the app in my [PR](https://github.com/hudsoncc/cocktails-test/pull/1) where I've mades changes [commit by commit](https://github.com/hudsoncc/cocktails-test/pull/1).
 
