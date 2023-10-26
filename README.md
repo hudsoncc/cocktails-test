@@ -43,7 +43,7 @@ Default | With Video | Dark Mode
 --|--|--
 <img width="349" alt="Screenshot 2023-10-25 at 19 14 01" src="https://github.com/hudsoncc/cocktails-test/assets/51756871/1f45a9ab-2ff3-4518-a2bf-111852534c95">|<img width="349" alt="Screenshot 2023-10-25 at 19 14 01" src="https://github.com/hudsoncc/cocktails-test/assets/51756871/912c200b-c1f4-42ca-a5af-58d40146b386">|<img width="349" alt="Screenshot 2023-10-25 at 17 15 37" src="https://github.com/hudsoncc/cocktails-test/assets/51756871/f328de48-1441-4b0b-a827-6cc9a12f1c92">
 
-### Functionality
+### Interactions
 **Search View**
 - Tap the search bar and type a cocktail name to start searching.
 - Tap a cocktail in the search results list to see more detail.
