@@ -15,7 +15,7 @@ This is a sample project that allows user's to search for cocktail recipes.
 ### Architecture
 - The app uses the MVVM-C design pattern to aid with structure, seperating concerns, and testabilty.
 - The UI layer is written 100% in code, favoring a programmatic approach over use of storyboards. I decided to utilise my [`UIView` extension](https://github.com/hudsoncc/cocktails-test/blob/main/Cocktails/UI/Extensions/UIView%2BAnchors.swift#L9C1-L10C10), which makes light work of writting declaritive UI code with AutoLayout anchors.
-- UI factory methods are abstracted away from `ViewController` classes, into their own `ViewControllerUI` class, whose sole responsibilty is to define and creaate the VC's subviews, layout, and geometry.
+- UI factory methods are abstracted away from `ViewController` classes, into their own [`ViewControllerUI`](https://github.com/hudsoncc/cocktails-test/blob/main/Cocktails/UI/Search/SearchViewUI.swift#L73-L106) class, whose sole responsibilty is to define and creaate the VC's subviews, layout, and geometry.
 - The app consumes the [search](https://www.thecocktaildb.com/api/json/v1/1/search.php?s=lemon) endpoint of cocktail DB's public API, to render cocktail meta within the app.
 - To be a good citizen of the API, requests made to the `search` endpoint triggered via keyboard input, are debounced with a ~0.5 interval while the user types. This also protects against making unnecessary roundtrips and local fetches requests to CoreData. 
 - The JSON response returned by the API is converted to struct objects that conform to `Decodable` for easy parsing, then mapped to `NSManagedObject`s, for local storage in the persistent store. 
