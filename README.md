@@ -50,7 +50,7 @@ Default | With Video | Dark Mode
 
 **Details View**
 - The details screen displays meta including a cocktail's name, tags, ingredients and instructions.
-- Tapping the cocktail's image pens the image in the browser.
+- Tapping the cocktail's image opens it in the browser.
 - Some cocktails have a corresponding video. When a video is present, a play button will appear on the detail screen. Tapping the play button will open the video in the browser.
 
 **Debug Menu**
